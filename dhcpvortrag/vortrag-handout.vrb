@@ -1,0 +1,10 @@
+\frametitle {DNS Zonefile generieren}
+
+    \scriptsize
+    \begin{verbatim}
+tholen      IN      A  134.130.1.23    ; Robert Tholen (Azubi)
+            IN  HINFO  "P4-3.0GHz"     "WinXP"
+sams        IN      A  134.130.1.38    ; Arnold Malcherek
+condor-win  IN      A  134.130.1.39    ; Thomas Lisson (Hiwi Eifert/Lorenz)
+            IN  HINFO  "Amd-Opteron-1GHz"      "Linux-FC5"
+    \end{verbatim}
