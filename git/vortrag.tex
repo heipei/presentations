@@ -1,0 +1,301 @@
+% vim:et:ts=2:
+% diese Datei enthaelt den eigentlichen Vortrag, siehe Handbuch zur Latex "Beamer" Klasse
+
+\mode<presentation> {
+  \usetheme{RWTHRZ}
+
+  %\usecolortheme{lily}
+  %\usecolortheme{seahorse}
+}
+
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage[right]{eurosym}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
+
+\title[Einführung in git]{Einführung in git}
+\author[Gilger, Lederhofer]{}
+\date[\today]{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlegraphic{\includegraphics[scale=0.4]{img/git-logo.png}}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Übersicht}
+  \begin{itemize}
+    \item Begriffe in der Versionsverwaltung
+    \item Unterschiede zentrale und dezentrale VCS
+    \item Wie git funktioniert
+    \item Warum man git benutzen sollte
+    \item Wie wir git benutzen
+    \item Weiterführende Literatur und Software
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Begriffe}
+  \begin{itemize}
+    \item {\bf DVCS, VCS, SCM} - (Verteilte) Versionsverwaltung
+    \item {\bf Repository} - Enthält die Geschichte (alle Versionen) eines Projekts
+    \item {\bf Commit, Revision} - Identifiziert eine Version \\ SVN: 423, git: {\tt b8bba41...}
+    \item {\bf Branch} - Ein Entwicklungszweig in der Geschichte
+    \item {\bf Worktree} - Das aktuelle Arbeitsverzeichniss (Dateien)
+    \item {\bf Checkout} - Die angelegten Dateien die einem bestimmten Stand entsprechen
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zentrale Versionskontrolle ...}
+  \begin{center}
+    \includegraphics[width=8cm]{img/central_vcs.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dezentrale Versionskontrolle}
+  \begin{center}
+    \includegraphics[width=6.3cm]{img/distributed_vcs.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Typischer zentralisierter Workflow}
+  \begin{center}
+    \includegraphics[width=9cm]{img/centralized_workflow.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Typischer verteiler Workflow}
+  \begin{center}
+    \includegraphics[width=10cm]{img/distributed_workflow.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kurze Geschichte von git}
+  \begin{itemize}
+    \item {\bf 2005:} Linus Torvalds schreibt git für die Entwicklung des Linux-Kernels \\ Anfangs sehr low-level und kompliziert
+    \item {\bf 2005-2010:} Linus gibt die Entwicklung ab, schnell wachsende und aktive Community
+    \item {\bf 2010:} git 1.7 ist aktuell, viele Open-Source Projekte sind auf git umgestiegen (oder auf andere DVCS) \\ Android, Debian, Fedora, GIMP, Gnome, openSUSE, Perl, Ruby on Rails, VLC, Wine, X.org
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git Datenstrukturen}
+  \begin{block}{Die Datenstrukturen zu kennen...}
+    \begin{itemize}
+      \item Hilft enorm die Funktion der Befehle zu verstehen.
+      \item Vermeidet falsche Arbeitsabläufe.
+      \item Ist kein großer Aufwand.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Delta-Storage vs. Snapshots}
+  \begin{center}
+    \includegraphics[width=9.5cm]{img/delta_storage.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git ist ein Dateisystem}
+  \begin{center}
+    \includegraphics[width=9cm]{img/history_detailed.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Commits und Branches}
+  \begin{center}
+    \includegraphics[width=10cm]{img/two_branches.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{HEAD - der aktuelle Branch}
+  \begin{center}
+    \includegraphics[width=10cm]{img/headref.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git checkout - den aktuellen Branch ändern}
+  \begin{center}
+    \includegraphics[width=8cm]{img/headref_changed.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git commit - einen Commit erstellen}
+  \begin{center}
+    \includegraphics[width=10cm]{img/new_commit.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git checkout - zum ersten Branch zurück}
+  \begin{center}
+    \includegraphics[width=10cm]{img/checkout.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git commit - ein paralleler Branch}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git ist eine Objekt-Datenbank}
+  \begin{center}
+    \includegraphics[width=7.8cm]{img/tree_commit.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Der git Index}
+  \begin{center}
+    \includegraphics[width=7cm]{img/staging.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Der Index / Stage}
+  \begin{center}
+    \includegraphics[width=5cm]{img/index1.png} \hspace{0.5cm} \includegraphics[width=5cm]{img/index2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dateizustände}
+  \begin{center}
+    \includegraphics[width=10cm]{img/tracked.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Warum sollte man git benutzen?}
+  \begin{itemize}
+    \pause
+    \item Viel zu lernen, anfangs schwer zu verstehen \\ Ungefähr einen Monat Einarbeitung, zahlt sich schnell aus
+    \pause
+    \item ''SVN funktioniert doch / Viele Leute benutzen noch SVN'' \\ {\tt git-svn} hilft bei der Umstellung
+    \pause
+    \item ''Ich hab nicht vor Open-Source Software zu schreiben'' \\ git ist genauso hilfreich wenn man nur allein arbeitet
+    \pause
+    \item Andere Gründe?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vorteile von git gegenüber SVN}
+  \begin{itemize}
+    \pause
+    \item {\bf Geschwindigkeit} \\ git ist sehr schnell und speicherzeffizient, alle Operationen sind lokal (offline)
+    \pause
+    \item {\bf Kein Setup} \\ {\tt git init} und sofort loslegen, keine Erstellung von zentralen Projekten
+    \pause
+    \item {\bf Einfache Rechtevergabe} \\ Normale Linux Dateisystemberechtigungen, Transport über ssh
+    \pause
+    \item {\bf Parallele Entwicklung} \\ Keine Festlegung auf Regeln um Konflikte zu vermeiden
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wie wir im NOC git benutzen}
+  \begin{itemize}
+    \item {\bf Szenario 1:} Entwicklung (kleinerer) Webanwendungen \\ Meistens an Ort und Stelle (.git), sehr schnell und einfach
+    \item {\bf Szenario 2:} Änderung an externer Software festhalten \\ (z.B. wenn Software von uns ''shibbolized'' wird)
+    \item {\bf Szenario 3:} Größere Projekte mit mehreren Mitarbeitern. Ausgezeichnete Versionen (v0.5) direkt unterstützt
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wie wir im NOC git benutzen}
+  % TODO: Screenshot halo:1234
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wichtige git-Befehle}
+  \begin{itemize}
+    \item {\tt git help <command>} \\ Hilfe zu git-commands
+    \item {\tt git init} \\ Ein git-Repo im aktuellen Verzeichniss beginnen
+    \item {\tt git add} \\ Datei dem Index hinzufügen
+    \item {\tt git status} \\ Status der Dateien im Arbeitsverzeichniss
+    \item {\tt git diff} \\ Aktuelle Änderungen als diff anzeigen
+    \item {\tt git commit} \\ Commit erstellen
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wichtige git-Befehle}
+  \begin{itemize}
+    \item {\tt git log} \\ Log (History) anzeigen
+    \item {\tt git branch} \\ Branches anzeigen (aktueller Branch hervorgehoben)
+    \item {\tt git checkout <branch>} \\ Branch auschecken
+    \item {\tt git show <object>} \\ Objekt (Branch, Commit, HEAD) anzeigen
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wichtige git-Dateien}
+  \begin{itemize}
+    \item {\tt \$HOME/.gitconfig} \\ git Benutzerkonfiguration 
+    \item {\tt .gitignore} \\ Zum Ignorieren bestimmter Dateien bzw. Dateitypen, Verzeichnisweise und rekursiv
+    \item {\tt .git} \\ git Repository, \emph{nur} im obersten Verzeichniss
+    \item {\tt .git/config} \\ Konfiguration auf Repository-Ebene
+    \item {\tt .git/objects} \\ Objektfiles bzw. Packfiles
+    \item {\tt .git/refs} \\ Branches (References)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Literatur zu git}
+  \begin{itemize}
+    \item {\bf Pro Git} - \url{http://progit.org/book/} \\ Sehr ausführliches Online-Buch das alle Themen behandelt
+    \item {\bf ''Getting Git''} - \url{http://www.gitcasts.com/git-talk} \\ Guter Vortrag (mit Folien) zu git
+    \item {\bf git Tutorial} - \url{http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html} \\ Kurzes Tutorial um schnell anzufangen
+    \item {\bf git - SVN crash course} - \url{http://git-scm.com/course/svn.html} \\ Einführung in git mit Vergleichen zu svn
+    \item {\bf Git - kurz \& gut} - O'Reilly, ISBN: 978-3-89721-914-4 \\ Gute und umfassende Einführung in Deutsch (\euro{9,90}) 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git Installation \& Interfaces}
+  \begin{itemize}
+    \item {\bf Linux:} Installation mittels Distribution \\ Grafische Programme: {\tt gitk} und {\tt git gui}
+    \item {\bf Mac OS X:} Installation mittels fink / MacPorts oder git-osx-installer \\ Grafische Programme: {\tt gitk} oder \href{http://gitx.frim.nl/}{GitX}
+    \item {\bf Windows:} Installation per \href{http://code.google.com/p/msysgit/}{msysgit}
+  \end{itemize}
+  $\Rightarrow$ Wie immer ist die \href{http://git-scm.com}{git-Webseite} der beste Anlaufpunkt
+
+  Erster Schritt: \\
+  {\tt \small git config --global user.name ''Johannes Gilger''} \\ 
+  {\tt \small git config --global user.email ''gilger@rz.de''}
+ 
+\end{frame}
+
+\begin{frame}
+  \frametitle{The End}
+  \begin{center}
+  \Huge Fragerunde!
+  \vspace{2cm}
+
+  \small Folgefragen können gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden.
+  \end{center}
+\end{frame}
+
+\end{document}

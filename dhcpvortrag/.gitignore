@@ -1,0 +1,12 @@
+topic01
+*.ps
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.dvi
+*.blg
+*.bbl
+*.aux
+*.pdf
