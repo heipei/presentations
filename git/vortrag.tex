@@ -31,8 +31,8 @@
   \begin{itemize}
     \item Begriffe in der Versionsverwaltung
     \item Unterschiede zentrale und dezentrale VCS
-    \item Wie git funktioniert
     \item Warum man git benutzen sollte
+    \item Wie git funktioniert
     \item Wie wir git benutzen
     \item Weiterführende Literatur und Software
   \end{itemize}
@@ -193,13 +193,6 @@
   \frametitle{git commit - ein paralleler Branch}
   \begin{center}
     \includegraphics[width=9cm]{img/branch.png}
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Branching und Merging}
-  \begin{center}
-    \includegraphics[width=9cm]{img/branch_1.pdf}
   \end{center}
 \end{frame}
 
@@ -469,10 +462,22 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Benutzung von git lernen}
+  \begin{enumerate}
+    \item {\bf git installieren} \\ Auf halo schon drauf, auf Privat-Rechnern kein Problem
+    \item {\bf Kopie von bisherigem Code in neues Verzeichniss} \\ Dann ein {\tt git init} und weiterentwickeln
+    \item {\bf Regelmäßig Doku / manpages lesen}
+    \item {\bf Alle Befehle ausprobieren} \\ Insbesondere destruktive Aktionen und Recovery
+    \item {\bf Im Zweifelsfall vorher das ganze Verzeichnis kopieren} \\ Als Backup wenn man sich noch nicht ganz sicher ist
+    \item {\bf Dateien in {\tt .git} anschauen} \\ Was sind Objekte? Was sind Branches?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
   \frametitle{Literatur zu git}
   \begin{itemize}
     \item {\bf Pro Git} - \url{http://progit.org/book/} \\ Sehr ausführliches Online-Buch das alle Themen behandelt
-    \item {\bf ''Getting Git''} - \url{http://www.gitcasts.com/git-talk} \\ Guter Vortrag (mit Folien) zu git
+    \item {\bf ''Getting Git''} - \url{http://www.gitcasts.com/git-talk} \\ Guter Vortrag (mit Folien) zur Benutzung und Datenstrukturen
     \item {\bf git Tutorial} - \url{http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html} \\ Kurzes Tutorial um schnell anzufangen
     \item {\bf git - SVN crash course} - \url{http://git-scm.com/course/svn.html} \\ Einführung in git mit Vergleichen zu svn
     \item {\bf Git - kurz \& gut} - O'Reilly, ISBN: 978-3-89721-914-4 \\ Gute und umfassende Einführung in Deutsch (\euro{9,90}) 
