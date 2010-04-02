@@ -112,12 +112,12 @@
     \pause
     \item {\bf Einfache Rechtevergabe} \\ Normale Dateisystemberechtigungen, Zugriff lokal oder z.B.\ über SSH
     \pause
-    \item {\bf Parallele Entwicklung} \\ Keine Festlegung auf Regeln oder Rollen
+    \item {\bf Schnelle parallele Entwicklung} \\ Keine Festlegung auf Regeln oder Rollen
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{git Datenstrukturen}
+  \frametitle{git Datenstrukturen und Dateilayout}
   \begin{block}{Die Datenstrukturen von git zu kennen...}
     \begin{itemize}
       \item Hilft enorm die Funktion der Befehle zu verstehen.
@@ -128,17 +128,24 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Delta-Storage vs. Snapshots}
+  \frametitle{Delta-Storage vs.\ Snapshots}
   \begin{center}
     \includegraphics[width=9.5cm]{img/delta_storage.pdf}
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{git ist ein Dateisystem}
+  \frametitle{git ist ein Dateisystem mit Versionen}
   \begin{center}
     \includegraphics[width=9cm]{img/history_detailed.png} \\
     Wichtigstes Konzept: Die History ist eine einfach verlinkte Liste von Commits. Die Links zeigen ''zurück'', zeitlich gesehen.
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git ist eine Objekt-Datenbank}
+  \begin{center}
+    \includegraphics[width=7.8cm]{img/tree_commit.pdf}
   \end{center}
 \end{frame}
 
@@ -190,9 +197,58 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{git ist eine Objekt-Datenbank}
+  \frametitle{Branching und Merging}
   \begin{center}
-    \includegraphics[width=7.8cm]{img/tree_commit.pdf}
+    \includegraphics[width=9cm]{img/branch_1.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_1.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_2.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_3.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_4.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_5.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_6.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branching und Merging}
+  \begin{center}
+    \includegraphics[width=9cm]{img/branch_7.pdf}
   \end{center}
 \end{frame}
 
@@ -221,9 +277,33 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Wichtige git-Befehle}
+  \frametitle{git revisions}
+  \small Für Befehle wie {\tt git log, git diff, git checkout, git show} etc.
   \begin{itemize}
-    \item {\tt git help <command>} \\ Hilfe zu git-commands
+    \item {\tt dae86e1950b1277e545cee180551750029cfe735 und dae86e} \\ SHA1 des Commits
+    \item {\tt master} \\ Ein Branch (reference)
+    \item {\tt master\~{}5} \\ Der fünfte Vorgänger des letzten Commits auf master
+    \item {\tt master@\{yesterday\}} \\ Zustand von master gestern
+  \end{itemize}
+  Siehe auch {\tt git help rev-parse} für weitere Optionen
+\end{frame}
+
+\begin{frame}
+  \frametitle{git revisions}
+  \small Für Befehle wie {\tt git log, git diff} etc.
+  \begin{itemize}
+    \item {\tt master..testing} \\ Änderungen in testing aber nicht in master
+    \item {\tt master..} \\ Änderungen im aktuellen Branch die nicht in master sind
+    \item {\tt ..master} \\ Änderungen die in master aber nicht im aktuellen Branch sind
+    \item {\tt master...testing} \\ Symmetrische Differenz
+  \end{itemize}
+  Siehe auch {\tt git help rev-parse} für weitere Optionen
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wichtige git-Befehle - Arbeiten}
+  \begin{itemize}
+    \item {\tt git help <command>} \\ Hilfe zu git-commands, wichtigster Befehl ;)
     \item {\tt git init} \\ Ein git-Repo im aktuellen Verzeichniss beginnen
     \item {\tt git add} \\ Datei dem Index hinzufügen
     \item {\tt git status} \\ Status der Dateien im Arbeitsverzeichniss
@@ -233,12 +313,24 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Wichtige git-Befehle}
+  \frametitle{Wichtige git-Befehle - History}
   \begin{itemize}
     \item {\tt git log} \\ Log (History) anzeigen
     \item {\tt git branch} \\ Branches anzeigen (aktueller Branch hervorgehoben)
     \item {\tt git checkout <branch>} \\ Branch auschecken
     \item {\tt git show <object>} \\ Objekt (Branch, Commit, HEAD) anzeigen
+    \item {\tt git blame -- <file>} \\ Anzeigen wer zuletzt welche Zeile geändert hat
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wichtige git-Befehle - Distribution und Branching}
+  \begin{itemize}
+    \item {\tt git branch -a} \\ Alle Branches anzeigen
+    \item {\tt git pull} \\ Aktualisierung des Repositories vom Server
+    \item {\tt git push} \\ Aktualisierung des Repositories auf den Server
+    \item {\tt git merge <branch>} \\ Einbinden eines anderen Branches
+    \item {\tt git remote} \\ Anzeigen von eingetragenen Servern
   \end{itemize}
 \end{frame}
 
@@ -246,12 +338,23 @@
   \frametitle{Wichtige git-Dateien}
   \begin{itemize}
     \item {\tt \$HOME/.gitconfig} \\ git Benutzerkonfiguration 
-    \item {\tt .gitignore} \\ Zum Ignorieren bestimmter Dateien bzw. Dateitypen, Verzeichnisweise und rekursiv
+    \item {\tt .gitignore} \\ Zum Ignorieren bestimmter Dateien bzw.\ Dateitypen, Verzeichnisweise und rekursiv
     \item {\tt .git} \\ git Repository, \emph{nur} im obersten Verzeichniss
     \item {\tt .git/config} \\ Konfiguration auf Repository-Ebene
-    \item {\tt .git/objects} \\ Objektfiles bzw. Packfiles
+    \item {\tt .git/objects} \\ Objektfiles bzw.\ Packfiles
     \item {\tt .git/refs} \\ Branches (References)
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wichtige git-Dateien - Branches}
+  Namespaces für refs (''references'') in {\tt .git}:
+  \begin{itemize}
+    \item {\tt .git/refs/heads} \\ Lokale Branches
+    \item {\tt .git/refs/remotes} \\ Remote Branches
+    \item {\tt .git/refs/tags} \\ Tags (Versionsnummern)
+  \end{itemize}
+  Das Arbeiten passiert \emph{immer} auf lokalen Branches, remote Branches werden nur von {\tt git pull} bzw.\ {\tt git fetch} geändert.
 \end{frame}
 
 \begin{frame}
@@ -344,7 +447,7 @@
   \frametitle{Wie wir im NOC git benutzen}
   \begin{itemize}
     \item {\bf Szenario 1:} Entwicklung (kleinerer) Webanwendungen \\ Meistens an Ort und Stelle (.git), sehr schnell und einfach
-    \item {\bf Szenario 2:} Änderung an externer Software festhalten \\ (z.B. wenn Software von uns ''shibbolized'' wird)
+    \item {\bf Szenario 2:} Änderung an externer Software festhalten \\ (z.B.\ wenn Software von uns ''shibbolized'' wird)
     \item {\bf Szenario 3:} Größere Projekte mit mehreren Mitarbeitern. Ausgezeichnete Versionen (v0.5) direkt unterstützt
   \end{itemize}
 \end{frame}
