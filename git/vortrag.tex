@@ -89,8 +89,36 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Warum sollte man git benutzen?}
+  \begin{itemize}
+    \pause
+    \item Viele neue Konzepte, anfangs evtl.\ schwer zu verstehen \\ Ungefähr einen Monat Einarbeitungszeit, zahlt sich jedoch schnell aus
+    \pause
+    \item ''SVN funktioniert doch / Viele Leute benutzen noch SVN'' \\ {\tt git-svn} hilft bei der Umstellung
+    \pause
+    \item ''Ich hab nicht vor Open-Source Software zu schreiben'' \\ git ist genauso hilfreich wenn man nur allein arbeitet
+    \pause
+    \item Andere Gründe?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vorteile von git gegenüber SVN}
+  \begin{itemize}
+    \pause
+    \item {\bf Geschwindigkeit} \\ git ist sehr schnell und speicherzeffizient, alle Operationen sind lokal (offline)
+    \pause
+    \item {\bf Kein Setup} \\ {\tt git init} und sofort loslegen, keine Erstellung von zentralen Projekten
+    \pause
+    \item {\bf Einfache Rechtevergabe} \\ Normale Dateisystemberechtigungen, Zugriff lokal oder z.B.\ über SSH
+    \pause
+    \item {\bf Parallele Entwicklung} \\ Keine Festlegung auf Regeln oder Rollen
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{git Datenstrukturen}
-  \begin{block}{Die Datenstrukturen zu kennen...}
+  \begin{block}{Die Datenstrukturen von git zu kennen...}
     \begin{itemize}
       \item Hilft enorm die Funktion der Befehle zu verstehen.
       \item Vermeidet falsche Arbeitsabläufe.
@@ -109,42 +137,48 @@
 \begin{frame}
   \frametitle{git ist ein Dateisystem}
   \begin{center}
-    \includegraphics[width=9cm]{img/history_detailed.png}
+    \includegraphics[width=9cm]{img/history_detailed.png} \\
+    Wichtigstes Konzept: Die History ist eine einfach verlinkte Liste von Commits. Die Links zeigen ''zurück'', zeitlich gesehen.
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{Commits und Branches}
   \begin{center}
-    \includegraphics[width=10cm]{img/two_branches.png}
+    \includegraphics[width=10cm]{img/two_branches.png} \\
+    Branches sind nur Zeiger (''references'') auf bestehende Commits
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{HEAD - der aktuelle Branch}
   \begin{center}
-    \includegraphics[width=10cm]{img/headref.png}
+    \includegraphics[width=8.5cm]{img/headref.png} \\
+    HEAD zeigt an auf welchem Branch aktuell Commits gespeichert werden
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{git checkout - den aktuellen Branch ändern}
   \begin{center}
-    \includegraphics[width=8cm]{img/headref_changed.png}
+    \includegraphics[width=8cm]{img/headref_changed.png} \\
+    Ein Checkout aktualisiert den Worktree und den HEAD-Zeiger
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{git commit - einen Commit erstellen}
   \begin{center}
-    \includegraphics[width=10cm]{img/new_commit.png}
+    \includegraphics[width=10cm]{img/new_commit.png} \\
+    Da HEAD auf ''testing'' zeigte wurde hier der Commit angelegt
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{git checkout - zum ersten Branch zurück}
   \begin{center}
-    \includegraphics[width=10cm]{img/checkout.png}
+    \includegraphics[width=10cm]{img/checkout.png} \\
+    Es müssen währenddessen noch Änderungen am Hauptentwicklungszweig vorgenommen werden
   \end{center}
 \end{frame}
 
@@ -163,16 +197,19 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Der git Index}
+  \frametitle{Der Index / Stage}
+  \vspace{-0.3cm}
   \begin{center}
-    \includegraphics[width=7cm]{img/staging.png}
+    \includegraphics[width=7cm]{img/staging.png} \\
+    Der Index ist ein sehr mächtiges Konzept
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{Der Index / Stage}
   \begin{center}
-    \includegraphics[width=5cm]{img/index1.png} \hspace{0.5cm} \includegraphics[width=5cm]{img/index2.png}
+    \includegraphics[width=5cm]{img/index1.png} \hspace{0.5cm} \includegraphics[width=5cm]{img/index2.png} \\
+    Typische Arbeitsweise mit git (links). Workflow wie bei SVN (rechts) auch möglich
   \end{center}
 \end{frame}
 
@@ -180,59 +217,6 @@
   \frametitle{Dateizustände}
   \begin{center}
     \includegraphics[width=10cm]{img/tracked.png}
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Warum sollte man git benutzen?}
-  \begin{itemize}
-    \pause
-    \item Viel zu lernen, anfangs schwer zu verstehen \\ Ungefähr einen Monat Einarbeitung, zahlt sich schnell aus
-    \pause
-    \item ''SVN funktioniert doch / Viele Leute benutzen noch SVN'' \\ {\tt git-svn} hilft bei der Umstellung
-    \pause
-    \item ''Ich hab nicht vor Open-Source Software zu schreiben'' \\ git ist genauso hilfreich wenn man nur allein arbeitet
-    \pause
-    \item Andere Gründe?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Vorteile von git gegenüber SVN}
-  \begin{itemize}
-    \pause
-    \item {\bf Geschwindigkeit} \\ git ist sehr schnell und speicherzeffizient, alle Operationen sind lokal (offline)
-    \pause
-    \item {\bf Kein Setup} \\ {\tt git init} und sofort loslegen, keine Erstellung von zentralen Projekten
-    \pause
-    \item {\bf Einfache Rechtevergabe} \\ Normale Linux Dateisystemberechtigungen, Transport über ssh
-    \pause
-    \item {\bf Parallele Entwicklung} \\ Keine Festlegung auf Regeln um Konflikte zu vermeiden
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Wie wir im NOC git benutzen}
-  \begin{itemize}
-    \item {\bf Szenario 1:} Entwicklung (kleinerer) Webanwendungen \\ Meistens an Ort und Stelle (.git), sehr schnell und einfach
-    \item {\bf Szenario 2:} Änderung an externer Software festhalten \\ (z.B. wenn Software von uns ''shibbolized'' wird)
-    \item {\bf Szenario 3:} Größere Projekte mit mehreren Mitarbeitern. Ausgezeichnete Versionen (v0.5) direkt unterstützt
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Wie wir im NOC git benutzen}
-  \vspace{-0.8cm}
-  \begin{center}
-    \includegraphics[width=11cm]{img/git_halo.png}
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Wie wir im NOC git benutzen}
-  \vspace{-0.3cm}
-  \begin{center}
-    \includegraphics[width=9cm]{img/git_diff_halo.png}
   \end{center}
 \end{frame}
 
@@ -271,8 +255,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Anfangen}
-  Erster Schritt: \\
+  \frametitle{git Tutorial}
+  Initiale Konfiguration: \\
   {\tt \small git config $--$global user.name ''Johannes Gilger''} \\ 
   {\tt \small git config $--$global user.email ''gilger@rz.de''} \\
 
@@ -305,6 +289,83 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{git Installation \& Interfaces}
+  \begin{itemize}
+    \item {\bf Linux:} Installation mittels Distribution \\ Grafische Programme: {\tt gitk} und {\tt git gui}
+    \item {\bf Mac OS X:} Installation mittels fink / MacPorts oder git-osx-installer \\ Grafische Programme: {\tt gitk} oder \href{http://gitx.frim.nl/}{GitX}
+    \item {\bf Windows:} Installation per \href{http://code.google.com/p/msysgit/}{msysgit} \\ Grafische Programme: \href{http://code.google.com/p/tortoisegit/}{tortoisegit}
+  \end{itemize}
+  $\Rightarrow$ Wie immer ist die \href{http://git-scm.com}{git-Webseite} der beste Anlaufpunkt
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{git GUIs - GitX}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=9.5cm]{img/gitx.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git GUIs - gitk}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=9.0cm]{img/gitk.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git GUIs - git gui}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=9.5cm]{img/git_gui.png} \\
+    Dateien können abschnittsweise committed werden
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git GUIs - tortoisegit}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=2.5cm]{img/tortoisegit.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{git GUIs - tortoisegit}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=9cm]{img/tortoisegit2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wie wir im NOC git benutzen}
+  \begin{itemize}
+    \item {\bf Szenario 1:} Entwicklung (kleinerer) Webanwendungen \\ Meistens an Ort und Stelle (.git), sehr schnell und einfach
+    \item {\bf Szenario 2:} Änderung an externer Software festhalten \\ (z.B. wenn Software von uns ''shibbolized'' wird)
+    \item {\bf Szenario 3:} Größere Projekte mit mehreren Mitarbeitern. Ausgezeichnete Versionen (v0.5) direkt unterstützt
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wie wir im NOC git benutzen}
+  \vspace{-0.8cm}
+  \begin{center}
+    \includegraphics[width=11cm]{img/git_halo.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wie wir im NOC git benutzen}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=9cm]{img/git_diff_halo.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
   \frametitle{Literatur zu git}
   \begin{itemize}
     \item {\bf Pro Git} - \url{http://progit.org/book/} \\ Sehr ausführliches Online-Buch das alle Themen behandelt
@@ -313,17 +374,6 @@
     \item {\bf git - SVN crash course} - \url{http://git-scm.com/course/svn.html} \\ Einführung in git mit Vergleichen zu svn
     \item {\bf Git - kurz \& gut} - O'Reilly, ISBN: 978-3-89721-914-4 \\ Gute und umfassende Einführung in Deutsch (\euro{9,90}) 
   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{git Installation \& Interfaces}
-  \begin{itemize}
-    \item {\bf Linux:} Installation mittels Distribution \\ Grafische Programme: {\tt gitk} und {\tt git gui}
-    \item {\bf Mac OS X:} Installation mittels fink / MacPorts oder git-osx-installer \\ Grafische Programme: {\tt gitk} oder \href{http://gitx.frim.nl/}{GitX}
-    \item {\bf Windows:} Installation per \href{http://code.google.com/p/msysgit/}{msysgit}
-  \end{itemize}
-  $\Rightarrow$ Wie immer ist die \href{http://git-scm.com}{git-Webseite} der beste Anlaufpunkt
-
 \end{frame}
 
 \begin{frame}
