@@ -3,9 +3,6 @@
 
 \mode<presentation> {
   \usetheme{RWTHRZ}
-
-  %\usecolortheme{lily}
-  %\usecolortheme{seahorse}
 }
 
 \usepackage[german]{babel}
@@ -87,7 +84,7 @@
   \begin{itemize}
     \item {\bf 2005:} Linus Torvalds schreibt git für die Entwicklung des Linux-Kernels \\ Anfangs sehr low-level und kompliziert
     \item {\bf 2005-2010:} Linus gibt die Entwicklung ab, schnell wachsende und aktive Community
-    \item {\bf 2010:} git 1.7 ist aktuell, viele Open-Source Projekte sind auf git umgestiegen (oder auf andere DVCS) \\ Android, Debian, Fedora, GIMP, Gnome, openSUSE, Perl, Ruby on Rails, VLC, Wine, X.org
+    \item {\bf 2010:} git 1.7 ist aktuell, viele Open-Source Projekte sind inzwischen auf git umgestiegen \\ Android, Debian, Fedora, GIMP, Gnome, openSUSE, Perl, Ruby on Rails, VLC, Wine, X.org
     \end{itemize}
 \end{frame}
 
@@ -225,7 +222,18 @@
 
 \begin{frame}
   \frametitle{Wie wir im NOC git benutzen}
-  % TODO: Screenshot halo:1234
+  \vspace{-0.8cm}
+  \begin{center}
+    \includegraphics[width=11cm]{img/git_halo.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wie wir im NOC git benutzen}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=9cm]{img/git_diff_halo.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -263,6 +271,40 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Anfangen}
+  Erster Schritt: \\
+  {\tt \small git config $--$global user.name ''Johannes Gilger''} \\ 
+  {\tt \small git config $--$global user.email ''gilger@rz.de''} \\
+
+  Eventuell noch: \\
+  {\tt \small git config $--$global color.ui ''auto''} \\ 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Das erste Repository}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=8cm]{img/tutorial_1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Das erste Repository}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=8cm]{img/tutorial_2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Das erste Repository}
+  \vspace{-0.3cm}
+  \begin{center}
+    \includegraphics[width=6cm]{img/tutorial_3.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
   \frametitle{Literatur zu git}
   \begin{itemize}
     \item {\bf Pro Git} - \url{http://progit.org/book/} \\ Sehr ausführliches Online-Buch das alle Themen behandelt
@@ -282,10 +324,6 @@
   \end{itemize}
   $\Rightarrow$ Wie immer ist die \href{http://git-scm.com}{git-Webseite} der beste Anlaufpunkt
 
-  Erster Schritt: \\
-  {\tt \small git config --global user.name ''Johannes Gilger''} \\ 
-  {\tt \small git config --global user.email ''gilger@rz.de''}
- 
 \end{frame}
 
 \begin{frame}
