@@ -13,18 +13,19 @@
 
 \defbeamertemplate*{footline}{rwthrz theme}
 {%
-  \begin{beamercolorbox}[colsep=.5pt,wd=.84\paperwidth]{upper separation line foot}
+  \begin{beamercolorbox}[colsep=.5pt,wd=\paperwidth]{upper separation line foot}
   \end{beamercolorbox}
+  \vspace{0.05cm}
   \leavevmode%
   \begin{beamercolorbox}[wd=.3\paperwidth,sep=.1cm,ht=3ex]{institute in head/foot}%
-      RWTH Aachen,\vspace{0.3ex}\linebreak
+      RWTH Aachen University\vspace{0.3ex}\linebreak
       Rechen- und Kommunikationszentrum
   \end{beamercolorbox}%
   \hfill
   \begin{beamercolorbox}[wd=.5\paperwidth,sep=.1cm,ht=3ex,right]{title in head/foot}%
     \usebeamerfont{title in head/foot}\insertshorttitle
   \end{beamercolorbox}
-  \hbox{ \includegraphics[width=.13\paperwidth]{rwth-logo.jpg} }
+  \hbox{ \includegraphics[width=.12\paperwidth]{rwth-logo.jpg} }
   \hspace{0.1cm}
   \vspace{0.1cm}
   \vskip0pt%
@@ -44,9 +45,9 @@
 \defbeamertemplate*{frametitle}{rwthrz theme}
 {%
   \begin{centering}
-    \textbf{\insertframetitle}
-    \par
+    \textbf{\insertframetitle} \\
   \end{centering}
+  \vspace{-0.3cm}
   \begin{beamercolorbox}[colsep=.5pt,wd=\paperwidth]{lower separation line head}
   \end{beamercolorbox}
 }
