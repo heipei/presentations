@@ -1,0 +1,56 @@
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/outer/beamerouterthemerwthrz.sty,v 1.7 2004/10/14 09:48:48 tantau Exp $
+
+% Copyright 2003 by Till Tantau <tantau@users.sourceforge.net>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\setbeamercolor{section in head/foot}{parent=palette tertiary}
+\setbeamercolor{subsection in head/foot}{parent=palette secondary}
+\setbeamercolor{author in head/foot}{parent=subsection in head/foot}
+\setbeamercolor{title in head/foot}{parent=section in head/foot}
+
+
+\defbeamertemplate*{footline}{rwthrz theme}
+{%
+  \begin{beamercolorbox}[colsep=.5pt,wd=\paperwidth]{upper separation line foot}
+  \end{beamercolorbox}
+  \vspace{0.05cm}
+  \leavevmode%
+  \begin{beamercolorbox}[wd=.3\paperwidth,sep=.1cm,ht=3ex]{institute in head/foot}%
+      RWTH Aachen University\vspace{0.3ex}\linebreak
+      Rechen- und Kommunikationszentrum
+  \end{beamercolorbox}%
+  \hfill
+  \begin{beamercolorbox}[wd=.5\paperwidth,sep=.1cm,ht=3ex,right]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}
+  \hbox{ \includegraphics[width=.12\paperwidth]{rwth-logo.jpg} }
+  \hspace{0.1cm}
+  \vspace{0.1cm}
+  \vskip0pt%
+}
+
+\newif\ifbeamer@theme@subsection
+\beamer@theme@subsectiontrue
+
+\DeclareOptionBeamer{subsection}[true]{\csname beamer@theme@subsection#1\endcsname}
+\ProcessOptionsBeamer
+
+
+\mode<presentation>
+
+\defbeamertemplate*{headline}{rwthrz theme}{}
+
+\defbeamertemplate*{frametitle}{rwthrz theme}
+{%
+  \begin{centering}
+    \textbf{\insertframetitle} \\
+  \end{centering}
+  \vspace{-0.3cm}
+  \begin{beamercolorbox}[colsep=.5pt,wd=\paperwidth]{lower separation line head}
+  \end{beamercolorbox}
+}
+
+\mode
+<all>
