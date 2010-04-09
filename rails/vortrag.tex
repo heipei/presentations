@@ -17,6 +17,8 @@
 \definecolor{green}{rgb}{0.2,0.5,0.2}
 \definecolor{blue}{rgb}{0.2,0.2,0.5}
 \definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{lightgray}{rgb}{0.9,0.9,0.9}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
 \hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 
 \title[Einführung in Ruby on Rails]{Einführung in Ruby on Rails}
@@ -29,7 +31,8 @@
   \begin{center}
   \vspace*{\fill}
   \Huge Einführung in Ruby on Rails \\
-  \vspace{1cm}
+  \vspace{0.8cm}
+  \includegraphics[scale=2]{img/ruby-logo.png} \enskip
   \includegraphics[scale=0.6]{img/rails-logo.png} \\
   \vspace{0.6cm}
   \Large Johannes Gilger \& Matthias Lederhofer \\
@@ -143,9 +146,15 @@
 
 \begin{frame}
 \frametitle{Convention over Configuration}
+  Rails trifft bestimmte Annahmen:
+  \vspace{0.5cm}
   \begin{itemize}
-    \item{Rails trifft viele Annahmen über das Layout der Datenbank und Anwendung \\ Einschränkungen helfen!}
+    \item Datenbank: Tabellen sind pluralisiert (Person => people). Jede Tabelle hat einen Primärschlüssel ''id'' (INT)
+    \item Datenbank: Fremschlüssel heissen person\_id
+    \item Applikation: Aufteilung in MVC und Ordner
   \end{itemize}
+  \vspace{0.5cm}
+  Resultat: Einschränkungen die befreien. Grundlegende Entwicklungstätigkeiten werden sehr einfach.
 \end{frame}
 
 \begin{frame}
@@ -156,13 +165,20 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{MVC - Model, View, Controller}
+  \begin{center}
+    \includegraphics[width=9.5cm]{img/mvc_rails.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
 \frametitle{ORM - Object Relational Mapper}
   {\tt \small CREATE TABLE people (''vorname'' VARCHAR(255),} \\
   {\tt \small \enskip ''nachname'' VARCHAR(255));} \\
   \vspace{0.3cm}
   \pause
 
-  {\tt \small class User < ActiveRecord::Base} \\
+  {\tt \small class Customer < ActiveRecord::Base} \\
   {\tt \small \enskip def name} \\
   {\tt \small \enskip \enskip return self.vorname + '' '' + self.nachname} \\
   {\tt \small \enskip end} \\
@@ -170,13 +186,200 @@
   \vspace{0.3cm}
   \pause
 
-  {\tt \small jojo = Person.create(:vorname => ''Johannes'',} \\
+  {\tt \small jojo = Customer.create(:vorname => ''Johannes'',} \\
   {\tt \small \enskip :nachname => ''Gilger'')} \\
   \vspace{0.3cm}
   \pause
 
   {\tt \small puts jojo.name} \\
   {\tt \small {\color{green}=> ''Johannes Gilger''}}
+\end{frame}
+
+\begin{frame}
+\frametitle{DRY - Don't Repeat Yourself}
+  {\tt \small CREATE TABLE customers (''vorname'' VARCHAR(255),} \\
+  {\tt \small \enskip ''nachname'' VARCHAR(255));} \\
+  \vspace{0.3cm}
+
+  {\tt \small class Customer < ActiveRecord::Base} \\
+  {\tt \small \enskip def name} \\
+  {\tt \small \enskip \enskip return self.vorname + '' '' + self.nachname} \\
+  {\tt \small \enskip end} \\
+  {\tt \small end} \\
+  \vspace{0.3cm}
+  \pause
+
+  \begin{center}
+  Wo kommen Customer.vorname und Customer.nachname her? \\
+  \pause
+  \vspace{0.2cm}
+  => Inspektion \\
+  \vspace{0.3cm}
+  \end{center}
+  Klasse: Tabelle ({\tt class Customer}) \\
+  Instanz: Zeile einer Tabelle ({\tt jojo = Customer.new}) \\
+  Attribut einer Instanz: Zelle ({\tt jojo.vorname = ''Johanna''})
+\end{frame}
+
+\begin{frame}
+\frametitle{DRY - Models}
+  Validation in den Models, alles was in die Datenbank soll wird über das Model geleitet \\
+  \tt \small
+  \vspace{0.5cm}
+  class Customer < ActiveRecord::Base \\
+  \enskip validates\_uniqueness\_of :login, :on => :create \\
+  \enskip validates\_confirmation\_of :password \\
+  \enskip validates\_length\_of :login, :within => 3..40 \\
+  \enskip validates\_length\_of :password, :within => 5..40 \\
+  end
+
+\end{frame}
+
+\begin{frame}
+\frametitle{ActiveRecord - Assoziationen}
+  Assoziationen machen Arbeiten mit zusammenhängenden Daten sehr einfach \\
+  \tt \small
+  \vspace{0.5cm}
+  class Order < ActiveRecord::Base \\
+  \enskip belongs\_to :customer \\
+  end \\ 
+  \vspace{0.3cm}
+  class Customer < ActiveRecord::Base \\
+  \enskip has\_many :orders \\
+  end \\
+  \vspace{0.5cm}
+  ich = Customer.find\_by\_vorname(''Johannes'') \\
+  ich.orders \\
+  {\color{green}=> [\#order1, \#order2, \ldots]}
+\end{frame}
+
+\begin{frame}
+\frametitle{ActiveRecord - Assoziationen}
+  \begin{center}
+    \includegraphics[width=10.5cm]{img/has_many.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{ActiveRecord - Assoziationen}
+  \begin{center}
+    \includegraphics[width=10.5cm]{img/belongs_to.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{ActiveRecord - Assoziationen}
+  \begin{center}
+    \includegraphics[width=7.5cm]{img/habtm.png} 
+  \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Der Controller}
+  Die Aufgaben des Controllers kann man unterteilen in
+  \begin{enumerate}
+    \item Daten aus einem oder mehreren Models holen (sprich: Instanzen)
+    \item Eventuell etwas mit diesen Daten machen
+    \item Daten an ein View weitergeben zur Anzeige
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Controller \& View}
+{\bf \small app/controllers/customer\_controller.rb}\\
+{ \tt \small
+  class CustomerController < ApplicationController \\
+  \enskip def list \\
+  \enskip \enskip @customers = Customer.find :all \\
+  \enskip end \\
+  end \\
+}
+\vspace{0.3cm}
+{\small \bf app/views/customer/list.rhtml} \\
+{ \tt \small
+  <table> \\
+  \enskip <\% @customers.each do customer \%> \\
+  \enskip \enskip <tr><td><\%= customer.vorname \%></td> \\
+  \enskip \enskip \enskip <td><\%= customer.nachname \%></td></tr> \\
+  \enskip <\% end \%> \\
+  </table>
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Rails - Anwendungsordner}
+\begin{center}
+Neue Rails-Applikation mit: {\tt rails neuesprojekt}
+\pause
+\small \tt
+\begin{columns}[t]
+  \begin{column}{5cm}
+    app \\
+    \enskip controllers \\
+    \enskip helpers \\
+    \enskip models \\
+    \enskip views \\
+    config \\
+    db \\
+    doc \\
+    lib \\
+    log \\
+    public \\
+    script \\
+    test \\
+    tmp \\
+    vendor
+  \end{column}
+  \pause
+  \begin{column}{5cm}
+    app \\
+    \enskip controllers \\
+    \enskip helpers \\
+    \enskip models \\
+    \enskip views \\
+    \pause
+    config \\
+    \pause
+    {\color{gray}db} \\
+    {\color{lightgray}doc} \\
+    {\color{lightgray}lib} \\
+    {\color{gray}log} \\
+    public \\
+    \pause
+    script \\
+    {\color{lightgray}test} \\
+    {\color{lightgray}tmp} \\
+    {\color{lightgray}vendor}
+  \end{column}
+\end{columns}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Rails - Anwendungsordner}
+\pause
+\small
+    {\tt app} \\
+    \enskip {\tt controllers} \\ \enskip\enskip Controller, verbinden Models und Views \\
+    \enskip {\tt helpers} \\ \enskip\enskip Hilfsmethoden die in mehreren Controllern benutzt werden \\
+    \enskip {\tt models} \\ \enskip\enskip Models (entsprechend z.B. den Tabellen in der Datenbank) \\
+    \enskip {\tt views} \\ \enskip\enskip HTML-Templates die zur Anzeige der Webseite benutzt werden \\
+    {\tt config} \\ \enskip\enskip Anwendungs- \& Datenbankkonfiguration \\
+    {\tt public} \\ \enskip\enskip Statische öffentliche Dateien (Bilder, Stylesheets) \\
+    {\tt script} \\ \enskip\enskip Rails Hilfsprogramme und Debugging-Tools \\
+\end{frame}
+
+\begin{frame}
+\frametitle{Rails - Entwicklungshilfen}
+\pause
+\small
+    {\tt script} \\
+    \enskip {\tt console} \\ \enskip\enskip Ruby-Konsole, schnelles Testen von z.B. Models\\
+    \enskip {\tt dbconsole} \\ \enskip\enskip Praktischer Shortcut, User/Passwort aus {\tt config/database.yml} \\
+    \enskip {\tt generate} \\ \enskip\enskip Allround-Generator für Grundgerüste (Controllers, Models, etc.) \\
+    \enskip {\tt plugin} \\ \enskip\enskip Plugins installieren \\
+    \enskip {\tt server} \\ \enskip\enskip Entwicklungs-Webserver auf localhost:3000 starten
 \end{frame}
 %\begin{frame}
 %  \frametitle{Zentrale Versionskontrolle ...}
@@ -651,6 +854,19 @@
 %  \end{enumerate}
 %\end{frame}
 %
+
+\begin{frame}
+  \frametitle{Rails - Alternativen}
+  Rails ist \emph{ein} Framework von vielen:
+  \begin{itemize}
+    \item {\bf Symfony} (PHP) \\ \url{http://www.symfony-project.org/}
+    \item {\bf CakePHP} (PHP) \\ \url{http://cakephp.org/}
+    \item {\bf Django} (Python) \\ \url{http://www.djangoproject.com/}
+    \item {\bf Merb} (Ruby) \\ \url{http://www.merbivore.com/}
+    \item {\bf Catalyst} (Perl) \\ \url{http://www.catalystframework.org/}
+  \end{itemize}
+\end{frame}
+
 \begin{frame}
   \frametitle{Literatur zu Ruby \& Rails}
   \begin{itemize}
