@@ -1,4 +1,4 @@
-% vim:et:ts=2:
+% vim:et:sw=2:ts=2:enc=iso-8859-15:fenc=iso-8859-15
 
 \mode<presentation> {
   \usetheme{RWTHRZ}
@@ -28,17 +28,17 @@
 
 \begin{frame}
   \begin{center}
-  \vspace*{\fill}
-  \Huge Einführung in Ruby on Rails \\
-  \vspace{0.8cm}
-  \includegraphics[scale=2]{img/ruby-logo.png} \enskip
-  \includegraphics[scale=0.6]{img/rails-logo.png} \\
-  \vspace{0.6cm}
-  \Large Johannes Gilger \& Matthias Lederhofer \\
-  \small Rechen- und Kommunikationszentrum der RWTH Aachen \\
-  \vspace{1cm}
-  \small \today
-  \vspace*{\fill}
+    \vspace*{\fill}
+    \Huge Einführung in Ruby on Rails \\
+    \vspace{0.8cm}
+    \includegraphics[scale=2]{img/ruby-logo.png} \enskip
+    \includegraphics[scale=0.6]{img/rails-logo.png} \\
+    \vspace{0.6cm}
+    \Large Johannes Gilger \& Matthias Lederhofer \\
+    \small Rechen- und Kommunikationszentrum der RWTH Aachen \\
+    \vspace{1cm}
+    \small \today
+    \vspace*{\fill}
   \end{center}
 \end{frame}
 
@@ -56,21 +56,21 @@
 
 
 \begin{frame}
-\frametitle{Der Name}
+  \frametitle{Der Name}
   \begin{center}
-  \Huge Ruby \pause on Rails
+    \Huge Ruby \pause on Rails
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Der Name}
+  \frametitle{Der Name}
   \begin{center}
-  \Huge {\color{red}Ruby} on Rails
+    \Huge {\color{red}Ruby} on Rails
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Ruby}
+  \frametitle{Ruby}
   \begin{itemize}
     \item Objektorientierte, interpretierte Sprache
     \item Dynamisch getyped
@@ -79,10 +79,45 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Ruby: Beispiele}
+  \frametitle{Ruby: Klassen}
+  { \tt \small
+  class Customer \\
+  \enskip attr\_accessor :vorname, :nachname \\
+  \enskip \\
+  \enskip def initialize \\
+  \enskip \enskip @vorname = @nachname = '''' \\
+  \enskip end \\
+  \enskip \\
+  \enskip def name \\
+  \enskip \enskip return @vorname + '' '' + @nachname \\
+  \enskip end \\
+  end \\
+  }
+  \begin{center}
+    \small Keine Getter/Setter-Methoden schreiben:
+  \end{center}
+  { \tt \small
+  jojo = Customer.new \\
+  jojo.vorname = ''Johannes'' \\
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ruby: Datentypen}
+  { \tt \small [0, 1, 2, ''hallo'', 23.5] } - Array \\
+  { \tt \small \%w(Jan, Feb, Mar, Apr)} - Stringarray \\
+  { \tt \small \{ ''jojo'' => 24, ''matled'' => 25 \}} - Hash \\
+  \vspace{0.3cm}
+  \begin{center}
+    \emph{Alle} Datentypen sind Objekte und besitzen ein Vielzahl praktischer Methoden
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ruby: Beispiele}
   {\tt \small 2.times \{puts ''Hello''\}} \\
   {\tt \small {\color{green}=> 'Hello'}} \\
-  {\tt \small {\color{green}=> 'Hello'}} 
+  {\tt \small {\color{green}=> 'Hello'}}
   \vspace{0.5cm}
   \pause
 
@@ -104,14 +139,14 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Der Name}
+  \frametitle{Der Name}
   \begin{center}
-  \Huge Ruby {\color{red}on Rails}
+    \Huge Ruby {\color{red}on Rails}
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Rails}
+  \frametitle{Rails}
   \begin{itemize}
     \item{Open-Source Web-Applikation Framework auf Grundlage von Ruby}
     \item{Aufgeteilt in mehrere Komponenten}
@@ -120,7 +155,7 @@
       \item{ActiveResource, ActionPack, ActiveSupport, ActionMailer}
     \end{itemize}
     \vspace{0.3cm}
-    
+
     \item{2004: Veröffentlichung, seitdem viele Veränderungen}
     \item{2008: Rails-Entwicklung wird von SVN auf git umgestellt}
     \item{2010: Rails 2.3.5 ist stable, Rails läuft auch auf Ruby 1.9}
@@ -134,17 +169,18 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Warum man Rails benutzen möchte}
+  \frametitle{Warum man Rails benutzen möchte}
   \begin{itemize}
     \item{Sehr schnelle Entwicklung von Webanwendungen \\ Insbesondere das initiale Interface}
     \item{Unabhängigkeit von Datenbank-Engine durch Abstraktion \\ Dadurch auch ein Sicherheitsvorteil}
     \item{Vermeidung von häufig wiederholten und eigentlich einfachen Operationen}
     \item{Vereinbarung bestimmter Konventionen die das Zusammenarbeiten einfacher machen}
+    \item{Hilfreiche Werkzeuge zum Entwickeln und Debuggen}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Convention over Configuration}
+  \frametitle{Convention over Configuration}
   Rails trifft bestimmte Annahmen:
   \vspace{0.5cm}
   \begin{itemize}
@@ -157,21 +193,21 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{MVC - Model, View, Controller}
+  \frametitle{MVC - Model, View, Controller}
   \begin{center}
     \includegraphics[width=7.5cm]{img/mvc.png}
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{MVC - Model, View, Controller}
+  \frametitle{MVC - Model, View, Controller}
   \begin{center}
     \includegraphics[width=9.5cm]{img/mvc_rails.png}
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{ORM - Object Relational Mapper}
+  \frametitle{ORM - Object Relational Mapper}
   {\tt \small CREATE TABLE people (''vorname'' VARCHAR(255),} \\
   {\tt \small \enskip ''nachname'' VARCHAR(255));} \\
   \vspace{0.3cm}
@@ -195,7 +231,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{DRY - Don't Repeat Yourself}
+  \frametitle{DRY - Don't Repeat Yourself}
   {\tt \small CREATE TABLE customers (''vorname'' VARCHAR(255),} \\
   {\tt \small \enskip ''nachname'' VARCHAR(255));} \\
   \vspace{0.3cm}
@@ -211,8 +247,8 @@
   \begin{center}
   Wo kommen Customer.vorname und Customer.nachname her? \\
   \pause
-  \vspace{0.2cm}
-  => Inspektion \\
+  \vspace{0.1cm}
+  => {\tt Customer} ist Unterklasse von {\tt ActiveRecord::Base}! \\
   \vspace{0.3cm}
   \end{center}
   Klasse: Tabelle ({\tt class Customer}) \\
@@ -221,7 +257,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{DRY - Models}
+  \frametitle{DRY - Models}
   Validation in den Models, alles was in die Datenbank soll wird über das Model geleitet \\
   \tt \small
   \vspace{0.5cm}
@@ -231,17 +267,16 @@
   \enskip validates\_length\_of :login, :within => 3..40 \\
   \enskip validates\_length\_of :password, :within => 5..40 \\
   end
-
 \end{frame}
 
 \begin{frame}
-\frametitle{ActiveRecord - Assoziationen}
+  \frametitle{ActiveRecord - Assoziationen}
   Assoziationen machen Arbeiten mit zusammenhängenden Daten sehr einfach \\
   \tt \small
   \vspace{0.5cm}
   class Order < ActiveRecord::Base \\
   \enskip belongs\_to :customer \\
-  end \\ 
+  end \\
   \vspace{0.3cm}
   class Customer < ActiveRecord::Base \\
   \enskip has\_many :orders \\
@@ -253,28 +288,28 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{ActiveRecord - Assoziationen}
+  \frametitle{ActiveRecord - Assoziationen}
   \begin{center}
     \includegraphics[width=10.5cm]{img/has_many.png}
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{ActiveRecord - Assoziationen}
+  \frametitle{ActiveRecord - Assoziationen}
   \begin{center}
     \includegraphics[width=10.5cm]{img/belongs_to.png}
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{ActiveRecord - Assoziationen}
+  \frametitle{ActiveRecord - Assoziationen}
   \begin{center}
-    \includegraphics[width=7.5cm]{img/habtm.png} 
+    \includegraphics[width=7.5cm]{img/habtm.png}
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Der Controller}
+  \frametitle{Der Controller}
   Die Aufgaben des Controllers kann man unterteilen in
   \begin{enumerate}
     \item Daten aus einem oder mehreren Models holen (sprich: Instanzen)
@@ -284,101 +319,153 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Controller \& View}
-{\bf \small app/controllers/customer\_controller.rb}\\
-{ \tt \small
-  class CustomerController < ApplicationController \\
-  \enskip def list \\
-  \enskip \enskip @customers = Customer.find :all \\
-  \enskip end \\
-  end \\
-}
-\vspace{0.3cm}
-{\small \bf app/views/customer/list.rhtml} \\
-{ \tt \small
-  <table> \\
-  \enskip <\% @customers.each do customer \%> \\
-  \enskip \enskip <tr><td><\%= customer.vorname \%></td> \\
-  \enskip \enskip \enskip <td><\%= customer.nachname \%></td></tr> \\
-  \enskip <\% end \%> \\
-  </table>
-}
-
+  \frametitle{Controller \& View}
+  {\bf \small app/controllers/people\_controller.rb}\\
+  { \tt \small
+    class {\color{red}People}Controller < ApplicationController \\
+    \enskip def {\color{green}list} \\
+    \enskip \enskip @customers = Customer.find :all \\
+    \enskip end \\
+    end \\
+  }
+  \vspace{0.3cm}
+  {\small \bf app/views/people/list.rhtml} \\
+  { \tt \small
+    <table> \\
+    \enskip <\% @customers.each do customer \%> \\
+    \enskip \enskip <tr><td><\%= customer.vorname \%></td> \\
+    \enskip \enskip \enskip <td><\%= customer.nachname \%></td></tr> \\
+    \enskip <\% end \%> \\
+    </table>
+  }
+  \begin{center}
+    Aufruf von {\tt http://localhost:3000/{\color{red}people}/{\color{green}list}}
+  \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Rails - Anwendungsordner}
-\begin{center}
-Neue Rails-Applikation mit: {\tt rails neuesprojekt}
-\pause
-\small \tt
-\begin{columns}[t]
-  \begin{column}{5cm}
-    app \\
-    \enskip controllers \\
-    \enskip helpers \\
-    \enskip models \\
-    \enskip views \\
-    config \\
-    db \\
-    doc \\
-    lib \\
-    log \\
-    public \\
-    script \\
-    test \\
-    tmp \\
-    vendor
-  \end{column}
+  \frametitle{Trennung Controller \& View}
+  Aufgaben: \\
+  \begin{itemize}
+    \item {\bf Controller}: Programmlogik
+    \item {\bf View}: Darstellung / Layout
+  \end{itemize}
+
+  Aufbau: \\
+  \begin{itemize}
+    \item {\bf Controller}: Einfach Ruby-Klasse
+    \item {\bf View}: eRuby, Embedded Ruby in HTML (wie z.B. PHP)
+  \end{itemize}
+  Beispiel: \\
+  \small \tt
+  <\% 3.times do \%> \\
+  \enskip <b><\%= ''Hello World'' \%></b><br/> \\
+  <\% end \%>
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rails - Anwendungsordner}
+  \begin{center}
+    Neue Rails-Applikation mit: {\tt rails neuesprojekt}
+    \pause
+    \small \tt
+    \begin{columns}[t]
+      \begin{column}{5cm}
+        app \\
+        \enskip controllers \\
+        \enskip helpers \\
+        \enskip models \\
+        \enskip views \\
+        config \\
+        db \\
+        doc \\
+        lib \\
+        log \\
+        public \\
+        script \\
+        test \\
+        tmp \\
+        vendor
+      \end{column}
+      \pause
+      \begin{column}{5cm}
+        app \\
+        \enskip controllers \\
+        \enskip helpers \\
+        \enskip models \\
+        \enskip views \\
+        \pause
+        config \\
+        \pause
+        {\color{gray}db} \\
+        {\color{lightgray}doc} \\
+        {\color{lightgray}lib} \\
+        {\color{gray}log} \\
+        public \\
+        \pause
+        script \\
+        {\color{lightgray}test} \\
+        {\color{lightgray}tmp} \\
+        {\color{lightgray}vendor}
+      \end{column}
+    \end{columns}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rails - Anwendungsordner}
   \pause
-  \begin{column}{5cm}
-    app \\
-    \enskip controllers \\
-    \enskip helpers \\
-    \enskip models \\
-    \enskip views \\
-    \pause
-    config \\
-    \pause
-    {\color{gray}db} \\
-    {\color{lightgray}doc} \\
-    {\color{lightgray}lib} \\
-    {\color{gray}log} \\
-    public \\
-    \pause
-    script \\
-    {\color{lightgray}test} \\
-    {\color{lightgray}tmp} \\
-    {\color{lightgray}vendor}
-  \end{column}
-\end{columns}
-\end{center}
+  \small
+  {\tt app} \\
+  \enskip {\tt controllers} \\ \enskip\enskip Controller, verbinden Models und Views \\
+  \enskip {\tt helpers} \\ \enskip\enskip Hilfsmethoden die in mehreren Controllern benutzt werden \\
+  \enskip {\tt models} \\ \enskip\enskip Models (entsprechend z.B. den Tabellen in der Datenbank) \\
+  \enskip {\tt views} \\ \enskip\enskip HTML-Templates die zur Anzeige der Webseite benutzt werden \\
+  {\tt config} \\ \enskip\enskip Anwendungs- \& Datenbankkonfiguration \\
+  {\tt public} \\ \enskip\enskip Statische öffentliche Dateien (Bilder, Stylesheets) \\
+  {\tt script} \\ \enskip\enskip Rails Hilfsprogramme und Debugging-Tools \\
 \end{frame}
 
 \begin{frame}
-\frametitle{Rails - Anwendungsordner}
-\pause
-\small
-    {\tt app} \\
-    \enskip {\tt controllers} \\ \enskip\enskip Controller, verbinden Models und Views \\
-    \enskip {\tt helpers} \\ \enskip\enskip Hilfsmethoden die in mehreren Controllern benutzt werden \\
-    \enskip {\tt models} \\ \enskip\enskip Models (entsprechend z.B. den Tabellen in der Datenbank) \\
-    \enskip {\tt views} \\ \enskip\enskip HTML-Templates die zur Anzeige der Webseite benutzt werden \\
-    {\tt config} \\ \enskip\enskip Anwendungs- \& Datenbankkonfiguration \\
-    {\tt public} \\ \enskip\enskip Statische öffentliche Dateien (Bilder, Stylesheets) \\
-    {\tt script} \\ \enskip\enskip Rails Hilfsprogramme und Debugging-Tools \\
+  \frametitle{Rails - Entwicklungshilfen}
+  \pause
+  \small
+  {\tt script} \\
+  \enskip {\tt console} \\ \enskip\enskip Ruby-Konsole, schnelles Testen von z.B. Models\\
+  \enskip {\tt dbconsole} \\ \enskip\enskip Praktischer Shortcut, User/Passwort aus {\tt config/database.yml} \\
+  \enskip {\tt generate} \\ \enskip\enskip Allround-Generator für Grundgerüste (Controllers, Models, etc.) \\
+  \enskip {\tt plugin} \\ \enskip\enskip Plugins installieren \\
+  \enskip {\tt server} \\ \enskip\enskip Entwicklungs-Webserver auf localhost:3000 starten
 \end{frame}
 
 \begin{frame}
-\frametitle{Rails - Entwicklungshilfen}
-\pause
-\small
-    {\tt script} \\
-    \enskip {\tt console} \\ \enskip\enskip Ruby-Konsole, schnelles Testen von z.B. Models\\
-    \enskip {\tt dbconsole} \\ \enskip\enskip Praktischer Shortcut, User/Passwort aus {\tt config/database.yml} \\
-    \enskip {\tt generate} \\ \enskip\enskip Allround-Generator für Grundgerüste (Controllers, Models, etc.) \\
-    \enskip {\tt plugin} \\ \enskip\enskip Plugins installieren \\
-    \enskip {\tt server} \\ \enskip\enskip Entwicklungs-Webserver auf localhost:3000 starten
+  \frametitle{Rails - Installation \& Maintenance}
+  Ruby benutzt eigene Paketverwaltung: \emph{RubyGems} \\
+  \vspace{0.3cm}
+  Vorteile:
+  \begin{itemize}
+    \item Schnelle und einfache Installation auch kleiner Programme
+    \item Programme (''Gems'') sind unabhÃngig von Distribution
+    \item Parallele Installation verschiedener Versionen
+  \end{itemize}
+  \vspace{0.3cm}
+  Befehle:
+  \begin{itemize}
+    \item {\tt gem list $--$local} - Installierte Gems anzeigen
+    \item {\tt gem install <name>} - Gem laden und installieren
+    \item {\tt gem update} - Installierte Gems updaten
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rails - Installation \& Maintenance}
+  Rails benutzt Version mit der das Projekt erstellt wurde. Bei einem
+  Update der Gems ({\tt rails, activerecord, ...}) wird \emph{nicht} automatisch
+  die neuste Version benutzt. \\
+  \vspace{0.3cm}
+  Rails-Applikation updaten: \\
+  \vspace{0.2cm}
+  In {\tt config/environment.rb} muss {\tt RAILS\_GEM\_VERSION} angepasst werden.
 \end{frame}
 
 \begin{frame}
@@ -391,13 +478,14 @@ Neue Rails-Applikation mit: {\tt rails neuesprojekt}
     \item {\bf Merb} (Ruby) \\ \url{http://www.merbivore.com/}
     \item {\bf Catalyst} (Perl) \\ \url{http://www.catalystframework.org/}
   \end{itemize}
+  Viele neuere Frameworks verhalten sich wie Rails
 \end{frame}
 
 \begin{frame}
   \frametitle{Literatur zu Ruby \& Rails}
   \begin{itemize}
     \item {\bf Rails Guides} - \url{http://guides.rubyonrails.org/} \\ Längere Tutorials, generell und über einzelne Komponenten
-    \item {\bf Agile Web Development with Rails, 3rd Edition} - The Pragmatic Bookshelf, ISBN: 978-1-93435-616-6 \\ Sehr ausführliches Rails-Buch mit Tutorial-Teil und Referenz
+    \item {\bf Agile Web Development with Rails, 3rd Edition} - The Pragmatic Bookshelf, ISBN: 978-1-93435-616-6 \\ Sehr ausführliches Rails-Buch mit Tutorial-Teil
     \item {\bf Railscasts} - \url{http://railscasts.com/} \\ Kurze Screencasts zu einzelnen Techniken
     \item {\bf Ruby Class References} - \url{http://www.ruby-doc.org/docs/ProgrammingRuby/html/builtins.html} \\ Klassen- und Library-Referenz
     \item {\bf Rails API} - \url{http://api.rubyonrails.org/} \\ Rails API Dokumentation
@@ -407,11 +495,11 @@ Neue Rails-Applikation mit: {\tt rails neuesprojekt}
 \begin{frame}
   \frametitle{The End}
   \begin{center}
-  \Huge Fragerunde!
-  \vspace{1.5cm}
+    \Huge Fragerunde!
+    \vspace{1.5cm}
 
-  \small Folgefragen können gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden. \\
-  Oder einfach vorbei schauen ;)
+    \small Folgefragen können gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden. \\
+    Oder einfach vorbei schauen ;)
   \end{center}
 \end{frame}
 
