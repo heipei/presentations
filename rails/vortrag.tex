@@ -1,11 +1,11 @@
-% vim:et:sw=2:ts=2:enc=iso-8859-15:fenc=iso-8859-15
+% vim:et:sw=2:ts=2
 
 \mode<presentation> {
   \usetheme{RWTHRZ}
 }
 
 \usepackage[german]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage[right]{eurosym}
@@ -20,7 +20,7 @@
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 \hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 
-\title[Einf¸hrung in Ruby on Rails]{Einf¸hrung in Ruby on Rails}
+\title[Einf√ºhrung in Ruby on Rails]{Einf√ºhrung in Ruby on Rails}
 \author[Gilger, Lederhofer]{}
 \date[\today]{\today}
 
@@ -29,7 +29,7 @@
 \begin{frame}
   \begin{center}
     \vspace*{\fill}
-    \Huge Einf¸hrung in Ruby on Rails \\
+    \Huge Einf√ºhrung in Ruby on Rails \\
     \vspace{0.8cm}
     \includegraphics[scale=2]{img/ruby-logo.png} \enskip
     \includegraphics[scale=0.6]{img/rails-logo.png} \\
@@ -43,14 +43,14 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{‹bersicht}
+  \frametitle{√úbersicht}
   \begin{itemize}
     \item Ruby
     \item Rails
-    \item Warum man Rails benutzen mˆchte
+    \item Warum man Rails benutzen m√∂chte
     \item Konzepte (DRY, MVC, Convention over Configuration)
     \item ActiveRecord - ORM
-    \item Weiterf¸hrende Literatur
+    \item Weiterf√ºhrende Literatur
   \end{itemize}
 \end{frame}
 
@@ -156,9 +156,9 @@
     \end{itemize}
     \vspace{0.3cm}
 
-    \item{2004: Verˆffentlichung, seitdem viele Ver‰nderungen}
+    \item{2004: Ver√∂ffentlichung, seitdem viele Ver√§nderungen}
     \item{2008: Rails-Entwicklung wird von SVN auf git umgestellt}
-    \item{2010: Rails 2.3.5 ist stable, Rails l‰uft auch auf Ruby 1.9}
+    \item{2010: Rails 2.3.5 ist stable, Rails l√§uft auch auf Ruby 1.9}
     \vspace{0.3cm}
 
     \item{Bekannte Projekte unter Rails:}
@@ -169,11 +169,11 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Warum man Rails benutzen mˆchte}
+  \frametitle{Warum man Rails benutzen m√∂chte}
   \begin{itemize}
     \item{Sehr schnelle Entwicklung von Webanwendungen \\ Insbesondere das initiale Interface}
-    \item{Unabh‰ngigkeit von Datenbank-Engine durch Abstraktion \\ Dadurch auch ein Sicherheitsvorteil}
-    \item{Vermeidung von h‰ufig wiederholten und eigentlich einfachen Operationen}
+    \item{Unabh√§ngigkeit von Datenbank-Engine durch Abstraktion \\ Dadurch auch ein Sicherheitsvorteil}
+    \item{Vermeidung von h√§ufig wiederholten und eigentlich einfachen Operationen}
     \item{Vereinbarung bestimmter Konventionen die das Zusammenarbeiten einfacher machen}
     \item{Hilfreiche Werkzeuge zum Entwickeln und Debuggen}
   \end{itemize}
@@ -184,12 +184,12 @@
   Rails trifft bestimmte Annahmen:
   \vspace{0.5cm}
   \begin{itemize}
-    \item Datenbank: Tabellen sind pluralisiert (Person => people). Jede Tabelle hat einen Prim‰rschl¸ssel ''id'' (INT)
-    \item Datenbank: Fremschl¸ssel heissen person\_id
+    \item Datenbank: Tabellen sind pluralisiert (Person => people). Jede Tabelle hat einen Prim√§rschl√ºssel ''id'' (INT)
+    \item Datenbank: Fremschl√ºssel heissen person\_id
     \item Applikation: Aufteilung in MVC und Ordner
   \end{itemize}
   \vspace{0.5cm}
-  Resultat: Einschr‰nkungen die befreien. Grundlegende Entwicklungst‰tigkeiten werden sehr einfach.
+  Resultat: Einschr√§nkungen die befreien. Grundlegende Entwicklungst√§tigkeiten werden sehr einfach.
 \end{frame}
 
 \begin{frame}
@@ -258,7 +258,7 @@
 
 \begin{frame}
   \frametitle{DRY - Models}
-  Validation in den Models, alles was in die Datenbank soll wird ¸ber das Model geleitet \\
+  Validation in den Models, alles was in die Datenbank soll wird √ºber das Model geleitet \\
   \tt \small
   \vspace{0.5cm}
   class Customer < ActiveRecord::Base \\
@@ -271,7 +271,7 @@
 
 \begin{frame}
   \frametitle{ActiveRecord - Assoziationen}
-  Assoziationen machen Arbeiten mit zusammenh‰ngenden Daten sehr einfach \\
+  Assoziationen machen Arbeiten mit zusammenh√§ngenden Daten sehr einfach \\
   \tt \small
   \vspace{0.5cm}
   class Order < ActiveRecord::Base \\
@@ -422,7 +422,7 @@
   \enskip {\tt models} \\ \enskip\enskip Models (entsprechend z.B. den Tabellen in der Datenbank) \\
   \enskip {\tt views} \\ \enskip\enskip HTML-Templates die zur Anzeige der Webseite benutzt werden \\
   {\tt config} \\ \enskip\enskip Anwendungs- \& Datenbankkonfiguration \\
-  {\tt public} \\ \enskip\enskip Statische ˆffentliche Dateien (Bilder, Stylesheets) \\
+  {\tt public} \\ \enskip\enskip Statische √∂ffentliche Dateien (Bilder, Stylesheets) \\
   {\tt script} \\ \enskip\enskip Rails Hilfsprogramme und Debugging-Tools \\
 \end{frame}
 
@@ -433,7 +433,7 @@
   {\tt script} \\
   \enskip {\tt console} \\ \enskip\enskip Ruby-Konsole, schnelles Testen von z.B. Models\\
   \enskip {\tt dbconsole} \\ \enskip\enskip Praktischer Shortcut, User/Passwort aus {\tt config/database.yml} \\
-  \enskip {\tt generate} \\ \enskip\enskip Allround-Generator f¸r Grundger¸ste (Controllers, Models, etc.) \\
+  \enskip {\tt generate} \\ \enskip\enskip Allround-Generator f√ºr Grundger√ºste (Controllers, Models, etc.) \\
   \enskip {\tt plugin} \\ \enskip\enskip Plugins installieren \\
   \enskip {\tt server} \\ \enskip\enskip Entwicklungs-Webserver auf localhost:3000 starten
 \end{frame}
@@ -445,7 +445,7 @@
   Vorteile:
   \begin{itemize}
     \item Schnelle und einfache Installation auch kleiner Programme
-    \item Programme (''Gems'') sind unabh√ngig von Distribution
+    \item Programme (''Gems'') sind unabh√§ngig von Distribution
     \item Parallele Installation verschiedener Versionen
   \end{itemize}
   \vspace{0.3cm}
@@ -484,8 +484,8 @@
 \begin{frame}
   \frametitle{Literatur zu Ruby \& Rails}
   \begin{itemize}
-    \item {\bf Rails Guides} - \url{http://guides.rubyonrails.org/} \\ L‰ngere Tutorials, generell und ¸ber einzelne Komponenten
-    \item {\bf Agile Web Development with Rails, 3rd Edition} - The Pragmatic Bookshelf, ISBN: 978-1-93435-616-6 \\ Sehr ausf¸hrliches Rails-Buch mit Tutorial-Teil
+    \item {\bf Rails Guides} - \url{http://guides.rubyonrails.org/} \\ L√§ngere Tutorials, generell und √ºber einzelne Komponenten
+    \item {\bf Agile Web Development with Rails, 3rd Edition} - The Pragmatic Bookshelf, ISBN: 978-1-93435-616-6 \\ Sehr ausf√ºhrliches Rails-Buch mit Tutorial-Teil
     \item {\bf Railscasts} - \url{http://railscasts.com/} \\ Kurze Screencasts zu einzelnen Techniken
     \item {\bf Ruby Core rDoc} - \url{http://www.ruby-doc.org/core/} \\ Klassen- und Library-Referenz \\ \url{http://www.ruby-doc.org/docs/ProgrammingRuby/html/builtins.html} (Alt)
     \item {\bf Rails API} - \url{http://api.rubyonrails.org/} \\ Rails API Dokumentation
@@ -498,7 +498,7 @@
     \Huge Fragerunde!
     \vspace{1.5cm}
 
-    \small Folgefragen kˆnnen gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden. \\
+    \small Folgefragen k√∂nnen gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden. \\
     Oder einfach vorbei schauen ;)
   \end{center}
 \end{frame}
