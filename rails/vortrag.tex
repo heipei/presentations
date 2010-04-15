@@ -19,7 +19,7 @@
 \definecolor{lightgray}{rgb}{0.9,0.9,0.9}
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 \hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
-
+\setbeamertemplate{navigation symbols}{}
 \title[Einführung in Ruby on Rails]{Einführung in Ruby on Rails}
 \author[Gilger, Lederhofer]{}
 \date[\today]{\today}
@@ -37,7 +37,7 @@
     \Large Johannes Gilger \& Matthias Lederhofer \\
     \small Rechen- und Kommunikationszentrum der RWTH Aachen \\
     \vspace{1cm}
-    \small \today
+    \small 16. April 2010
     \vspace*{\fill}
   \end{center}
 \end{frame}
@@ -58,7 +58,7 @@
 \begin{frame}
   \frametitle{Der Name}
   \begin{center}
-    \Huge Ruby \pause on Rails
+    \Huge Ruby on Rails
   \end{center}
 \end{frame}
 
@@ -76,6 +76,9 @@
     \item Dynamisch getyped
     \item Sehr einfache Syntax
   \end{itemize}
+  \begin{center}
+    Ruby auch für sich betrachtet sehr interessant!
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -93,6 +96,7 @@
   \enskip end \\
   end \\
   }
+  \pause
   \begin{center}
     \small Keine Getter/Setter-Methoden schreiben:
   \end{center}
@@ -148,7 +152,7 @@
 \begin{frame}
   \frametitle{Rails}
   \begin{itemize}
-    \item{Open-Source Web-Applikation Framework auf Grundlage von Ruby}
+    \item{Open-Source Web-Application Framework auf Grundlage von Ruby}
     \item{Aufgeteilt in mehrere Komponenten}
     \begin{itemize}
       \item{ActiveRecord - ORM (Datenbankanbindung)}
@@ -171,10 +175,15 @@
 \begin{frame}
   \frametitle{Warum man Rails benutzen möchte}
   \begin{itemize}
+    \pause
     \item{{\bf Sehr schnelle Entwicklung von Webanwendungen} \\ Insbesondere das initiale Interface}
-    \item{{\bf Unabhängigkeit von Datenbank-Engine} \\ Dadurch auch ein Sicherheitsvorteil}
+    \pause
+    \item{{\bf Unabhängigkeit von Datenbank-Engine} \\ Dadurch auch ein Sicherheitsvorteil. Manche Anwendungen können ohne ein einziges SQL-Statement geschrieben werden}
+    \pause
     \item{{\bf Vereinfachung von typischen Operationen} \\ Häufig wiederholte Dinge wie Links, Bilder, \ldots}
+    \pause
     \item{{\bf Vereinbarung bestimmter Konventionen} \\ Machen das Zusammenarbeiten einfacher}
+    \pause
     \item{{\bf Hilfreiche Werkzeuge zum Entwickeln und Debuggen}}
   \end{itemize}
 \end{frame}
@@ -184,12 +193,15 @@
   Rails trifft bestimmte Annahmen:
   \vspace{0.5cm}
   \begin{itemize}
+    \pause
     \item Datenbank: Tabellen sind pluralisiert (Person => people). Jede Tabelle hat einen Primärschlüssel ''id'' (INT)
+    \pause
     \item Datenbank: Fremschlüssel heissen person\_id
-    \item Applikation: Aufteilung in MVC und Ordner
+    \pause
+    \item Applikation: Aufteilung in MVC nach Ordnern, Dateien
   \end{itemize}
   \vspace{0.5cm}
-  Resultat: Einschränkungen die befreien. Grundlegende Entwicklungstätigkeiten werden sehr einfach.
+  Resultat: Einschränkungen helfen. Grundlegende Entwicklungstätigkeiten werden sehr einfach.
 \end{frame}
 
 \begin{frame}
@@ -208,11 +220,13 @@
 
 \begin{frame}
   \frametitle{ORM - Object Relational Mapper}
+  {\bf \small SQL:} \\
   {\tt \small CREATE TABLE people (''vorname'' VARCHAR(255),} \\
   {\tt \small \enskip ''nachname'' VARCHAR(255));} \\
   \vspace{0.3cm}
   \pause
-
+  
+  {\bf \small app/models/customer.rb} \\
   {\tt \small class Customer < ActiveRecord::Base} \\
   {\tt \small \enskip def name} \\
   {\tt \small \enskip \enskip return self.vorname + '' '' + self.nachname} \\
@@ -221,6 +235,7 @@
   \vspace{0.3cm}
   \pause
 
+  {\bf \small irb} {\small \tt (ruby script/console)} \\
   {\tt \small jojo = Customer.create(:vorname => ''Johannes'',} \\
   {\tt \small \enskip :nachname => ''Gilger'')} \\
   \vspace{0.3cm}
@@ -319,6 +334,27 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Trennung Controller \& View}
+  Aufgaben: \\
+  \begin{itemize}
+    \item {\bf Controller}: Programmlogik
+    \item {\bf View}: Darstellung / Layout
+  \end{itemize}
+
+  Aufbau: \\
+  \begin{itemize}
+    \item {\bf Controller}: Einfache Ruby-Klasse
+    \item {\bf View}: eRuby, Embedded Ruby in HTML (wie z.B. PHP)
+  \end{itemize}
+  \pause
+  Beispiel: \\
+  \small \tt
+  <\% 3.times do \%> \\
+  \enskip <b><\%= ''Hello World'' \%></b><br/> \\
+  <\% end \%>
+\end{frame}
+
+\begin{frame}
   \frametitle{Controller \& View}
   {\bf \small app/controllers/people\_controller.rb}\\
   { \tt \small
@@ -328,6 +364,7 @@
     \enskip end \\
     end \\
   }
+  \pause
   \vspace{0.3cm}
   {\small \bf app/views/people/list.rhtml} \\
   { \tt \small
@@ -338,29 +375,10 @@
     \enskip <\% end \%> \\
     </table>
   }
+  \pause
   \begin{center}
     Aufruf von {\tt http://localhost:3000/{\color{red}people}/{\color{green}list}}
   \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Trennung Controller \& View}
-  Aufgaben: \\
-  \begin{itemize}
-    \item {\bf Controller}: Programmlogik
-    \item {\bf View}: Darstellung / Layout
-  \end{itemize}
-
-  Aufbau: \\
-  \begin{itemize}
-    \item {\bf Controller}: Einfach Ruby-Klasse
-    \item {\bf View}: eRuby, Embedded Ruby in HTML (wie z.B. PHP)
-  \end{itemize}
-  Beispiel: \\
-  \small \tt
-  <\% 3.times do \%> \\
-  \enskip <b><\%= ''Hello World'' \%></b><br/> \\
-  <\% end \%>
 \end{frame}
 
 \begin{frame}
@@ -394,15 +412,12 @@
         \enskip helpers \\
         \enskip models \\
         \enskip views \\
-        \pause
         config \\
-        \pause
         {\color{gray}db} \\
         {\color{lightgray}doc} \\
         {\color{lightgray}lib} \\
         {\color{gray}log} \\
         public \\
-        \pause
         script \\
         {\color{lightgray}test} \\
         {\color{lightgray}tmp} \\
@@ -414,7 +429,6 @@
 
 \begin{frame}
   \frametitle{Rails - Anwendungsordner}
-  \pause
   \small
   {\tt app} \\
   \enskip {\tt controllers} \\ \enskip\enskip Controller, verbinden Models und Views \\
@@ -428,7 +442,6 @@
 
 \begin{frame}
   \frametitle{Rails - Entwicklungshilfen}
-  \pause
   \small
   {\tt script} \\
   \enskip {\tt console} \\ \enskip\enskip Ruby-Konsole, schnelles Testen von z.B. Models\\
@@ -441,6 +454,7 @@
 \begin{frame}
   \frametitle{Rails - Installation \& Maintenance}
   Ruby benutzt eigene Paketverwaltung: \emph{RubyGems} \\
+  \pause
   \vspace{0.3cm}
   Vorteile:
   \begin{itemize}
@@ -448,6 +462,7 @@
     \item Programme (''Gems'') sind unabhängig von Distribution
     \item Parallele Installation verschiedener Versionen
   \end{itemize}
+  \pause
   \vspace{0.3cm}
   Befehle:
   \begin{itemize}
@@ -476,6 +491,7 @@
     \item Datenbankschema ausdenken und mit Scaffold-Generator Code erzeugen
     \item {\bf Ruby} benutzen (für kleinere Tools, Parser, etc.)
   \end{itemize}
+  \pause
   \vspace{0.5cm}
   {\bf Vorsicht!}\\
   Rails entwickelt sich sehr schnell und Best-Practices haben sich mehrfach geändert. Deshalb immer 
