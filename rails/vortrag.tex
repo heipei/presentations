@@ -194,7 +194,7 @@
   \vspace{0.5cm}
   \begin{itemize}
     \pause
-    \item Datenbank: Tabellen sind pluralisiert (Person => people). Jede Tabelle hat einen Primärschlüssel ''id'' (INT)
+    \item Datenbank: Tabellen sind pluralisiert (Customer => customers). Jede Tabelle hat einen Primärschlüssel ''id'' (INT)
     \pause
     \item Datenbank: Fremschlüssel heissen person\_id
     \pause
@@ -221,7 +221,7 @@
 \begin{frame}
   \frametitle{ORM - Object Relational Mapper}
   {\bf \small SQL:} \\
-  {\tt \small CREATE TABLE people (''vorname'' VARCHAR(255),} \\
+  {\tt \small CREATE TABLE customers (''vorname'' VARCHAR(255),} \\
   {\tt \small \enskip ''nachname'' VARCHAR(255));} \\
   \vspace{0.3cm}
   \pause
@@ -236,7 +236,7 @@
   \pause
 
   {\bf \small irb} {\small \tt (ruby script/console)} \\
-  {\tt \small jojo = Customer.create(:vorname => ''Johannes'',} \\
+  {\tt \small jojo = Customer.new(:vorname => ''Johannes'',} \\
   {\tt \small \enskip :nachname => ''Gilger'')} \\
   \vspace{0.3cm}
   \pause
@@ -432,7 +432,7 @@
   \small
   {\tt app} \\
   \enskip {\tt controllers} \\ \enskip\enskip Controller, verbinden Models und Views \\
-  \enskip {\tt helpers} \\ \enskip\enskip Hilfsmethoden die in mehreren Controllern benutzt werden \\
+  \enskip {\tt helpers} \\ \enskip\enskip Hilfsmethoden die in mehreren Views benutzt werden \\
   \enskip {\tt models} \\ \enskip\enskip Models (entsprechend z.B. den Tabellen in der Datenbank) \\
   \enskip {\tt views} \\ \enskip\enskip HTML-Templates die zur Anzeige der Webseite benutzt werden \\
   {\tt config} \\ \enskip\enskip Anwendungs- \& Datenbankkonfiguration \\
