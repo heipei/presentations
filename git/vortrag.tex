@@ -6,7 +6,7 @@
 }
 
 \usepackage[german]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage[right]{eurosym}
@@ -15,7 +15,7 @@
 \definecolor{darkblue}{rgb}{0,0,.5}
 \hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblue, menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 
-\title[Einführung in git]{Einführung in git}
+\title[EinfÃ¼hrung in git]{EinfÃ¼hrung in git}
 \author[Gilger, Lederhofer]{}
 \date[\today]{\today}
 
@@ -24,7 +24,7 @@
 \begin{frame}
   \begin{center}
   \vspace{1cm}
-  \Huge Einführung in git \\
+  \Huge EinfÃ¼hrung in git \\
   \vspace{1cm}
   \includegraphics[scale=0.4]{img/git-logo.png} \\
   \vspace{0.6cm}
@@ -36,14 +36,14 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Übersicht}
+  \frametitle{Ãœbersicht}
   \begin{itemize}
     \item Begriffe in der Versionsverwaltung
     \item Unterschiede zentrale und dezentrale VCS
     \item Warum man git benutzen sollte
     \item Wie git funktioniert
     \item Wie wir git benutzen
-    \item Weiterführende Literatur und Software
+    \item WeiterfÃ¼hrende Literatur und Software
   \end{itemize}
 \end{frame}
 
@@ -52,7 +52,7 @@
   \frametitle{Begriffe}
   \begin{itemize}
     \item {\bf DVCS, VCS, SCM} - (Verteilte) Versionsverwaltung
-    \item {\bf Repository} - Enthält die Geschichte (alle Versionen) eines Projekts
+    \item {\bf Repository} - EnthÃ¤lt die Geschichte (alle Versionen) eines Projekts
     \item {\bf Commit, Revision} - Identifiziert eine Version \\ SVN: 423, git: {\tt b8bba41...}
     \item {\bf Branch} - Ein Entwicklungszweig in der Geschichte
     \item {\bf Worktree} - Das aktuelle Arbeitsverzeichniss (Dateien)
@@ -93,7 +93,7 @@
 \begin{frame}
   \frametitle{Kurze Geschichte von git}
   \begin{itemize}
-    \item {\bf 2005:} Linus Torvalds schreibt git für die Entwicklung des Linux-Kernels \\ Anfangs sehr low-level und kompliziert
+    \item {\bf 2005:} Linus Torvalds schreibt git fÃ¼r die Entwicklung des Linux-Kernels \\ Anfangs sehr low-level und kompliziert
     \item {\bf 2005-2010:} Linus gibt die Entwicklung ab, schnell wachsende und aktive Community
     \item {\bf 2010:} git 1.7 ist aktuell, viele Open-Source Projekte sind inzwischen auf git umgestiegen \\ Android, Debian, Fedora, GIMP, Gnome, openSUSE, Perl, Ruby on Rails, VLC, Wine, X.org
     \end{itemize}
@@ -103,25 +103,25 @@
   \frametitle{Warum sollte man git benutzen?}
   \begin{itemize}
     \pause
-    \item Viele neue Konzepte, anfangs evtl.\ schwer zu verstehen \\ Ungefähr einen Monat Einarbeitungszeit, zahlt sich jedoch schnell aus
+    \item Viele neue Konzepte, anfangs evtl.\ schwer zu verstehen \\ UngefÃ¤hr einen Monat Einarbeitungszeit, zahlt sich jedoch schnell aus
     \pause
     \item ''SVN funktioniert doch / Viele Leute benutzen noch SVN'' \\ {\tt git-svn} hilft bei der Umstellung, SVN ist schlichtweg Legacy
     \pause
     \item ''Ich hab nicht vor Open-Source Software zu schreiben'' \\ git ist genauso hilfreich wenn man nur allein arbeitet
     \pause
-    \item Andere Gründe?
+    \item Andere GrÃ¼nde?
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Vorteile von git gegenüber SVN}
+  \frametitle{Vorteile von git gegenÃ¼ber SVN}
   \begin{itemize}
     \pause
     \item {\bf Geschwindigkeit} \\ git ist \emph{sehr} schnell und speicherzeffizient, alle Operationen sind lokal (offline)
     \pause
-    \item {\bf Kein Setup} \\ {\tt git init} und sofort loslegen, keine Erstellung von zentralen Projekten nötig
+    \item {\bf Kein Setup} \\ {\tt git init} und sofort loslegen, keine Erstellung von zentralen Projekten nÃ¶tig
     \pause
-    \item {\bf Einfache Rechtevergabe} \\ Normale Dateisystemberechtigungen, Zugriff lokal oder z.B.\ über SSH
+    \item {\bf Einfache Rechtevergabe} \\ Normale Dateisystemberechtigungen, Zugriff lokal oder z.B.\ Ã¼ber SSH
     \pause
     \item {\bf Schnelle parallele Entwicklung} \\ Keine Festlegung auf Regeln oder Rollen
   \end{itemize}
@@ -134,7 +134,7 @@
     \pause
     \item {\bf Kein Checkout von Subdirs} \\ Kein wirklicher Nachteil, bedeutet dass man Projekte eher in einzelne Repositories aufteilt
     \pause
-    \item {\bf Keine feine Rechtevergabe für Server} \\ Oft nicht nötig durch Workflow (Maintainer, Teams)
+    \item {\bf Keine feine Rechtevergabe fÃ¼r Server} \\ Oft nicht nÃ¶tig durch Workflow (Maintainer, Teams)
     \pause
     \item {\bf Potentielles Chaos mit mehreren Leuten} \\ Wenn sich nicht auf einen Workflow geeignigt wird
   \end{itemize}
@@ -145,8 +145,8 @@
   \begin{block}{Die Datenstrukturen von git zu kennen...}
     \begin{itemize}
       \item Hilft enorm die Funktion der Befehle zu verstehen.
-      \item Vermeidet falsche Arbeitsabläufe.
-      \item Ist kein großer Aufwand.
+      \item Vermeidet falsche ArbeitsablÃ¤ufe.
+      \item Ist kein groÃŸer Aufwand.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -162,7 +162,7 @@
   \frametitle{git ist ein Dateisystem mit Versionen}
   \begin{center}
     \includegraphics[width=9cm]{img/history_detailed.png} \\
-    Wichtigstes Konzept: Die History ist eine einfach verlinkte Liste von Commits. Die Links zeigen ''zurück'', zeitlich gesehen.
+    Wichtigstes Konzept: Die History ist eine einfach verlinkte Liste von Commits. Die Links zeigen ''zurÃ¼ck'', zeitlich gesehen.
   \end{center}
 \end{frame}
 
@@ -190,7 +190,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{git checkout - den aktuellen Branch ändern}
+  \frametitle{git checkout - den aktuellen Branch Ã¤ndern}
   \begin{center}
     \includegraphics[width=8cm]{img/headref_changed.png} \\
     Ein Checkout aktualisiert den Worktree und den HEAD-Zeiger
@@ -206,10 +206,10 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{git checkout - zum ersten Branch zurück}
+  \frametitle{git checkout - zum ersten Branch zurÃ¼ck}
   \begin{center}
     \includegraphics[width=10cm]{img/checkout.png} \\
-    Es müssen währenddessen noch Änderungen am Hauptentwicklungszweig vorgenommen werden
+    Es mÃ¼ssen wÃ¤hrenddessen noch Ã„nderungen am Hauptentwicklungszweig vorgenommen werden
   \end{center}
 \end{frame}
 
@@ -275,7 +275,7 @@
     \item Normalerweise beginnend mit einem {\tt git clone} eines Repositories
     \item Setzt automatisch einen lokalen ''master'' Branch auf
     \item Entwickelt wird immer auf lokalen Branches
-    \item Auf Remote Branches kann nicht committed werden, Remote Branches werden nur durch fetch / pull geändert
+    \item Auf Remote Branches kann nicht committed werden, Remote Branches werden nur durch fetch / pull geÃ¤ndert
   \end{itemize}
 \end{frame}
 
@@ -305,7 +305,7 @@
   \vspace{-0.3cm}
   \begin{center}
     \includegraphics[width=7cm]{img/staging.png} \\
-    Der Index ist sehr mächtig und Alleinstellungsmerkmal von git
+    Der Index ist sehr mÃ¤chtig und Alleinstellungsmerkmal von git
   \end{center}
 \end{frame}
 
@@ -314,12 +314,12 @@
   \begin{center}
     \includegraphics[width=5cm]{img/index1.png} \hspace{0.5cm} \includegraphics[width=5cm]{img/index2.png} \\
     \vspace{1cm}
-    Typische Arbeitsweise mit git (links). \\ Workflow wie bei SVN (rechts) auch möglich.
+    Typische Arbeitsweise mit git (links). \\ Workflow wie bei SVN (rechts) auch mÃ¶glich.
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Dateizustände}
+  \frametitle{DateizustÃ¤nde}
   \vspace{-0.3cm}
   \begin{center}
     \includegraphics[width=10cm]{img/tracked.png} \\
@@ -329,26 +329,26 @@
 
 \begin{frame}
   \frametitle{git revisions}
-  \small Für Befehle wie {\tt git log, git diff, git checkout, git show} etc.
+  \small FÃ¼r Befehle wie {\tt git log, git diff, git checkout, git show} etc.
   \begin{itemize}
     \item {\tt dae86e1950b1277e545cee180551750029cfe735 und dae86e} \\ SHA1 des Commits
     \item {\tt master} \\ Ein Branch (reference)
-    \item {\tt master\~{}5} \\ Der fünfte Vorgänger des letzten Commits auf master
+    \item {\tt master\~{}5} \\ Der fÃ¼nfte VorgÃ¤nger des letzten Commits auf master
     \item {\tt master@\{yesterday\}} \\ Zustand von master gestern
   \end{itemize}
-  Siehe auch {\tt git help rev-parse} für weitere Optionen
+  Siehe auch {\tt git help rev-parse} fÃ¼r weitere Optionen
 \end{frame}
 
 \begin{frame}
   \frametitle{git revisions}
-  \small Für Befehle wie {\tt git log, git diff} etc.
+  \small FÃ¼r Befehle wie {\tt git log, git diff} etc.
   \begin{itemize}
-    \item {\tt master..testing} \\ Änderungen in testing aber nicht in master
-    \item {\tt master..} \\ Änderungen im aktuellen Branch die nicht in master sind
-    \item {\tt ..master} \\ Änderungen die in master aber nicht im aktuellen Branch sind
+    \item {\tt master..testing} \\ Ã„nderungen in testing aber nicht in master
+    \item {\tt master..} \\ Ã„nderungen im aktuellen Branch die nicht in master sind
+    \item {\tt ..master} \\ Ã„nderungen die in master aber nicht im aktuellen Branch sind
     \item {\tt master...testing} \\ Symmetrische Differenz
   \end{itemize}
-  Siehe auch {\tt git help rev-parse} für weitere Optionen
+  Siehe auch {\tt git help rev-parse} fÃ¼r weitere Optionen
 \end{frame}
 
 \begin{frame}
@@ -356,9 +356,9 @@
   \begin{itemize}
     \item {\tt git help <command>} \\ Hilfe zu git-commands, wichtigster Befehl ;)
     \item {\tt git init} \\ Ein git-Repo im aktuellen Verzeichnis beginnen
-    \item {\tt git add} \\ Datei dem Index hinzufügen
+    \item {\tt git add} \\ Datei dem Index hinzufÃ¼gen
     \item {\tt git status} \\ Status der Dateien im Arbeitsverzeichnis
-    \item {\tt git diff} \\ Aktuelle Änderungen als diff anzeigen
+    \item {\tt git diff} \\ Aktuelle Ã„nderungen als diff anzeigen
     \item {\tt git commit} \\ Commit erstellen
   \end{itemize}
 \end{frame}
@@ -370,7 +370,7 @@
     \item {\tt git branch} \\ Branches anzeigen (aktueller Branch hervorgehoben)
     \item {\tt git checkout <branch>} \\ Branch auschecken
     \item {\tt git show <object>} \\ Objekt (Branch, Commit, HEAD) anzeigen
-    \item {\tt git blame -- <file>} \\ Anzeigen wer zuletzt welche Zeile geändert hat
+    \item {\tt git blame -- <file>} \\ Anzeigen wer zuletzt welche Zeile geÃ¤ndert hat
   \end{itemize}
 \end{frame}
 
@@ -391,7 +391,7 @@
   \begin{itemize}
     \item {\tt \$HOME/.gitconfig} \\ git Benutzerkonfiguration 
     \item {\tt .gitignore} \\ Zum Ignorieren bestimmter Dateien bzw.\ Dateitypen, Verzeichnisweise und rekursiv
-    \item {\tt .git} \\ git Repository, \emph{nur} im obersten Verzeichniss
+    \item {\tt .git} \\ git Repository, \emph{nur} im obersten Verzeichnis
     \item {\tt .git/config} \\ Konfiguration auf Repository-Ebene, z.B. Remotes
     \item {\tt .git/objects} \\ Objektdatenbank (Dateien, Commits, Tags)
     \item {\tt .git/refs} \\ Branches (References)
@@ -400,13 +400,13 @@
 
 \begin{frame}
   \frametitle{Wichtige git-Dateien - Branches}
-  Namespaces für refs (''references'') in {\tt .git}:
+  Namespaces fÃ¼r refs (''references'') in {\tt .git}:
   \begin{itemize}
     \item {\tt .git/refs/heads} \\ Lokale Branches
     \item {\tt .git/refs/remotes} \\ Remote Branches
     \item {\tt .git/refs/tags} \\ Tags (Versionsnummern)
   \end{itemize}
-  Das Arbeiten passiert \emph{immer} auf lokalen Branches, remote Branches werden nur von {\tt git pull} bzw.\ {\tt git fetch} geändert.
+  Das Arbeiten passiert \emph{immer} auf lokalen Branches, remote Branches werden nur von {\tt git pull} bzw.\ {\tt git fetch} geÃ¤ndert.
 \end{frame}
 
 \begin{frame}
@@ -476,7 +476,7 @@
   \vspace{-0.3cm}
   \begin{center}
     \includegraphics[width=9.5cm]{img/git_gui.png} \\
-    Dateien können abschnittsweise committed werden
+    Dateien kÃ¶nnen abschnittsweise committed werden
   \end{center}
 \end{frame}
 
@@ -500,8 +500,8 @@
   \frametitle{Wie wir im NOC git benutzen}
   \begin{itemize}
     \item {\bf Szenario 1:} Entwicklung (kleinerer) Webanwendungen \\ Meistens an Ort und Stelle (.git), sehr schnell und einfach
-    \item {\bf Szenario 2:} Änderung an externer Software festhalten \\ (z.B.\ wenn Software von uns ''shibbolized'' wird)
-    \item {\bf Szenario 3:} Größere Projekte mit mehreren Mitarbeitern. Ausgezeichnete Versionen (v0.5) direkt unterstützt
+    \item {\bf Szenario 2:} Ã„nderung an externer Software festhalten \\ (z.B.\ wenn Software von uns ''shibbolized'' wird)
+    \item {\bf Szenario 3:} GrÃ¶ÃŸere Projekte mit mehreren Mitarbeitern. Ausgezeichnete Versionen (v0.5) direkt unterstÃ¼tzt
   \end{itemize}
 \end{frame}
 
@@ -526,7 +526,7 @@
   \begin{enumerate}
     \item {\bf git installieren} \\ Auf halo schon drauf, auf anderen Rechnern einfach
     \item {\bf Kopie von bisherigem Code in neues Verzeichnis} \\ Dann ein {\tt git init} und weiterentwickeln
-    \item {\bf Regelmäßig Doku / manpages lesen}
+    \item {\bf RegelmÃ¤ÃŸig Doku / manpages lesen}
     \item {\bf Alle Befehle ausprobieren} \\ Insbesondere destruktive Aktionen und Recovery
     \item {\bf Im Zweifelsfall vorher das ganze Verzeichnis kopieren} \\ Als Backup wenn man sich noch nicht ganz sicher ist
     \item {\bf Dateien in {\tt .git} anschauen} \\ Was sind Objekte? Was sind Branches?
@@ -536,11 +536,11 @@
 \begin{frame}
   \frametitle{Literatur zu git}
   \begin{itemize}
-    \item {\bf Pro Git} - \url{http://progit.org/book/} \\ Sehr ausführliches Online-Buch das alle Themen behandelt
+    \item {\bf Pro Git} - \url{http://progit.org/book/} \\ Sehr ausfÃ¼hrliches Online-Buch das alle Themen behandelt
     \item {\bf ''Getting Git''} - \url{http://www.gitcasts.com/git-talk} \\ Guter Vortrag (mit Folien) zur Benutzung und Datenstrukturen
     \item {\bf git Tutorial} - \url{http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html} \\ Kurzes Tutorial um schnell anzufangen
-    \item {\bf git - SVN crash course} - \url{http://git-scm.com/course/svn.html} \\ Einführung in git mit Vergleichen zu svn
-    \item {\bf Git - kurz \& gut} - O'Reilly, ISBN: 978-3-89721-914-4 \\ Gute und umfassende Einführung in Deutsch (\euro{9,90}) 
+    \item {\bf git - SVN crash course} - \url{http://git-scm.com/course/svn.html} \\ EinfÃ¼hrung in git mit Vergleichen zu svn
+    \item {\bf Git - kurz \& gut} - O'Reilly, ISBN: 978-3-89721-914-4 \\ Gute und umfassende EinfÃ¼hrung in Deutsch (\euro{9,90}) 
   \end{itemize}
 \end{frame}
 
@@ -550,7 +550,7 @@
   \Huge Fragerunde!
   \vspace{1.5cm}
 
-  \small Folgefragen können gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden. \\
+  \small Folgefragen kÃ¶nnen gerne an gilger@rz.rwth-aachen.de und lederhofer@rz.rwth-aachen.de gerichtet werden. \\
   Oder einfach vorbei schauen ;)
   \end{center}
 \end{frame}
