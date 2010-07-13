@@ -30,8 +30,9 @@
   \vspace{0.6cm}
   \Large Johannes Gilger \& Matthias Lederhofer \\
   \small Rechen- und Kommunikationszentrum der RWTH Aachen \\
+  \small Network Operation Center \\
   \vspace{1cm}
-  \small \today
+  \small 14. Juli 2010
   \end{center}
 \end{frame}
 
@@ -55,7 +56,7 @@
     \item {\bf Repository} - Enthält die Geschichte (alle Versionen) eines Projekts
     \item {\bf Commit, Revision} - Identifiziert eine Version \\ SVN: 423, git: {\tt b8bba41...}
     \item {\bf Branch} - Ein Entwicklungszweig in der Geschichte
-    \item {\bf Worktree} - Das aktuelle Arbeitsverzeichniss (Dateien)
+    \item {\bf Worktree} - Das aktuelle Arbeitsverzeichnis (Dateien)
     \item {\bf Checkout} - Die angelegten Dateien die einem bestimmten Stand entsprechen
   \end{itemize}
 \end{frame}
@@ -95,8 +96,15 @@
   \begin{itemize}
     \item {\bf 2005:} Linus Torvalds schreibt git für die Entwicklung des Linux-Kernels \\ Anfangs sehr low-level und kompliziert
     \item {\bf 2005-2010:} Linus gibt die Entwicklung ab, schnell wachsende und aktive Community
-    \item {\bf 2010:} git 1.7 ist aktuell, viele Open-Source Projekte sind inzwischen auf git umgestiegen \\ Android, Debian, Fedora, GIMP, Gnome, openSUSE, Perl, Ruby on Rails, VLC, Wine, X.org
+    \item {\bf 2010:} git 1.7 ist aktuell, viele Open-Source Projekte sind inzwischen auf git umgestiegen \\ Android, Debian, Eclipse, Fedora, GIMP, Gnome, openSUSE, Perl, Ruby on Rails, Samba, VLC, Wine, X.org
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+  \Huge Motivation \\
+  \small {\it ''Warum die ganze Arbeit?''}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -138,6 +146,13 @@
     \pause
     \item {\bf Potentielles Chaos mit mehreren Leuten} \\ Wenn sich nicht auf einen Workflow geeignigt wird
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+  \Huge Technischer Hintergrund \\
+  \small {\it ''Behind the curtain\ldots''}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -272,10 +287,11 @@
 \begin{frame}
   \frametitle{Remotes}
   \begin{itemize}
-    \item Normalerweise beginnend mit einem {\tt git clone} eines Repositories
-    \item Setzt automatisch einen lokalen ''master'' Branch auf
-    \item Entwickelt wird immer auf lokalen Branches
-    \item Auf Remote Branches kann nicht committed werden, Remote Branches werden nur durch fetch / pull geändert
+    \item Remotes sind Kürzel um mit anderen Repositories zu arbeiten. Namespaces nach Repository: {\tt jojo/master}
+    \item Remote Branches (Tracking Branches) dienen dazu der Arbeit in anderen Repositories zu folgen
+    \item Entwickelt wird \emph{immer} auf lokalen Branches
+    \item Auf Remote Branches kann nicht committed werden
+    \item Remote Branches werden nur durch fetch / pull geändert
   \end{itemize}
 \end{frame}
 
@@ -328,27 +344,10 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{git revisions}
-  \small Für Befehle wie {\tt git log, git diff, git checkout, git show} etc.
-  \begin{itemize}
-    \item {\tt dae86e1950b1277e545cee180551750029cfe735 und dae86e} \\ SHA1 des Commits
-    \item {\tt master} \\ Ein Branch (reference)
-    \item {\tt master\~{}5} \\ Der fünfte Vorgänger des letzten Commits auf master
-    \item {\tt master@\{yesterday\}} \\ Zustand von master gestern
-  \end{itemize}
-  Siehe auch {\tt git help rev-parse} für weitere Optionen
-\end{frame}
-
-\begin{frame}
-  \frametitle{git revisions}
-  \small Für Befehle wie {\tt git log, git diff} etc.
-  \begin{itemize}
-    \item {\tt master..testing} \\ Änderungen in testing aber nicht in master
-    \item {\tt master..} \\ Änderungen im aktuellen Branch die nicht in master sind
-    \item {\tt ..master} \\ Änderungen die in master aber nicht im aktuellen Branch sind
-    \item {\tt master...testing} \\ Symmetrische Differenz
-  \end{itemize}
-  Siehe auch {\tt git help rev-parse} für weitere Optionen
+  \begin{center}
+  \Huge Praxis \\
+  \small Befehle, Dateien, Programme
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -387,11 +386,36 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{git revisions}
+  \small Für Befehle wie {\tt git log, git diff, git checkout, git show} etc.
+  \begin{itemize}
+    \item {\tt dae86e1950b1277e545cee180551750029cfe735} oder {\tt dae86e} (falls eindeutig) \\ SHA1 des Commits
+    \item {\tt master} oder {\tt origin/master} \\ Branch-Namen (References)
+    \item {\tt master\~{}5} \\ Der fünfte Vorgänger des letzten Commits auf master
+    \item {\tt master@\{yesterday\}} \\ Zustand von master gestern
+  \end{itemize}
+  Siehe auch {\tt git help rev-parse} für weitere Optionen
+\end{frame}
+
+\begin{frame}
+  \frametitle{git revisions}
+  \small Für Befehle wie {\tt git log, git diff} etc.
+  \begin{itemize}
+    \item {\tt master..testing} \\ Änderungen in testing aber nicht in master
+    \item {\tt master..} \\ Änderungen im aktuellen Branch die nicht in master sind
+    \item {\tt ..master} \\ Änderungen die in master aber nicht im aktuellen Branch sind
+    \item {\tt master...testing} \\ Symmetrische Differenz
+  \end{itemize}
+  Siehe auch {\tt git help rev-parse} für weitere Optionen
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Wichtige git-Dateien}
   \begin{itemize}
     \item {\tt \$HOME/.gitconfig} \\ git Benutzerkonfiguration 
     \item {\tt .gitignore} \\ Zum Ignorieren bestimmter Dateien bzw.\ Dateitypen, Verzeichnisweise und rekursiv
-    \item {\tt .git} \\ git Repository, \emph{nur} im obersten Verzeichnis
+    \item {\tt .git} \\ git Repository, nur \emph{einmal}, im obersten Verzeichnis
     \item {\tt .git/config} \\ Konfiguration auf Repository-Ebene, z.B. Remotes
     \item {\tt .git/objects} \\ Objektdatenbank (Dateien, Commits, Tags)
     \item {\tt .git/refs} \\ Branches (References)
@@ -406,7 +430,7 @@
     \item {\tt .git/refs/remotes} \\ Remote Branches
     \item {\tt .git/refs/tags} \\ Tags (Versionsnummern)
   \end{itemize}
-  Das Arbeiten passiert \emph{immer} auf lokalen Branches, remote Branches werden nur von {\tt git pull} bzw.\ {\tt git fetch} geändert.
+  Gearbeitet wird \emph{immer} auf lokalen Branches, Remote Branches werden nur von {\tt git pull} bzw.\ {\tt git fetch} geändert. Commits ohne Branch gehen früher oder später verloren!
 \end{frame}
 
 \begin{frame}
@@ -450,8 +474,12 @@
     \item {\bf Linux:} Installation mittels Distribution \\ Grafische Programme: {\tt gitk} und {\tt git gui}
     \item {\bf Mac OS X:} Installation mittels fink / MacPorts oder git-osx-installer \\ Grafische Programme: {\tt gitk} oder \href{http://gitx.frim.nl/}{GitX}
     \item {\bf Windows:} Installation per \href{http://code.google.com/p/msysgit/}{msysgit} \\ Grafische Programme: \href{http://code.google.com/p/tortoisegit/}{tortoisegit}
+    \item {\bf Web:} GitWeb (privat), \href{http://github.com}{GitHub} (Hosted)
   \end{itemize}
-  $\Rightarrow$ Wie immer ist die \href{http://git-scm.com}{git-Webseite} der beste Anlaufpunkt
+  \begin{center}
+  $\Rightarrow$ Wie immer ist die \href{http://git-scm.com}{git-Webseite} der beste Anlaufpunkt \\
+  {\bf Aber:} Eigentlich kein GUI nötig um mit git zu arbeiten
+  \end{center}
 
 \end{frame}
 
@@ -524,7 +552,7 @@
 \begin{frame}
   \frametitle{Benutzung von git lernen}
   \begin{enumerate}
-    \item {\bf git installieren} \\ Auf halo schon drauf, auf anderen Rechnern einfach
+    \item {\bf git installieren} \\ Linux: Package-Manager
     \item {\bf Kopie von bisherigem Code in neues Verzeichnis} \\ Dann ein {\tt git init} und weiterentwickeln
     \item {\bf Regelmäßig Doku / manpages lesen}
     \item {\bf Alle Befehle ausprobieren} \\ Insbesondere destruktive Aktionen und Recovery
