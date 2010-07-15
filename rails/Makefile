@@ -2,8 +2,8 @@ STYLES = $(shell echo *.sty)
 
 .PHONY: all clean clean-misc clean-pdf
 
-all: vortrag-handout.pdf vortrag-folien.pdf
-#all: vortrag-handout.pdf
+#all: vortrag-handout.pdf vortrag-folien.pdf
+all: vortrag-handout.pdf
 
 clean: clean-misc clean-pdf
 clean-misc: clean-vortrag-folien-misc clean-vortrag-handout-misc
